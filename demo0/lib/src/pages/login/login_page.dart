@@ -24,9 +24,12 @@ class _LoginPageState extends State<LoginPage> {
             padding: const EdgeInsets.only(top: 20.0, left: 30, right: 30),
             child: Card(
               elevation: 4,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [Text("1234")],
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [Text("1234")],
+                ),
               ),
             ),
           )
