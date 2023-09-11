@@ -28,8 +28,13 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       appBar: AppBar(title: Text("Login")),
       body: Container(
+        width: double.infinity,
+        color: Colors.red,
         child: Column(
-          children: [Text("Box1")],
+          children: [
+            Text("Box1"),
+            Text("Box2"),
+          ],
         ),
       ),
     );
