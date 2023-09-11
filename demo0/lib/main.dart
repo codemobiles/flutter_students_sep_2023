@@ -30,6 +30,7 @@ class _LoginPageState extends State<LoginPage> {
       body: Column(
         children: [
           Container(
+            width: double.infinity,
             color: Colors.red,
             child: Text("I am body"),
           ),
