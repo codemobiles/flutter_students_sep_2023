@@ -29,7 +29,10 @@ class _LoginPageState extends State<LoginPage> {
       appBar: AppBar(title: Text("Login")),
       body: Column(
         children: [
-          Text("I am body"),
+          Container(
+            color: Colors.red,
+            child: Text("I am body"),
+          ),
           Text("I am body"),
           Text("I am body"),
         ],
