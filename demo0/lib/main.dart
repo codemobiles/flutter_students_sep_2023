@@ -38,7 +38,7 @@ class _LoginPageState extends State<LoginPage> {
               color: Colors.green,
               child: Text(
                 "Box1",
-                style: TextStyle(fontSize: 30),
+                style: TextStyle(fontSize: 30, color: Colors.white),
               ),
             ),
             Container(color: Colors.red, child: Text("Box2")),
