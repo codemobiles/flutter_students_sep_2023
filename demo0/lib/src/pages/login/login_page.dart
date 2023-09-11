@@ -20,7 +20,7 @@ class _LoginPageState extends State<LoginPage> {
           const SizedBox(height: 30),
           SizedBox(height: 110, width: double.infinity, child: Image.asset(Asset.logoImage)),
           // login box
-          const Padding(
+          Padding(
             padding: EdgeInsets.only(top: 20.0, left: 30, right: 30),
             child: Card(
               elevation: 4,
@@ -49,7 +49,12 @@ class _LoginPageState extends State<LoginPage> {
                         labelText: 'Password',
                         icon: Icon(Icons.password),
                       ),
-                    )
+                    ),
+                    SizedBox(height: 10),
+                    // Login button
+                    ElevatedButton(onPressed: () {}, child: Text("Login")),
+                    // Register button
+                    OutlinedButton(onPressed: (){}, child: Text("Register"))
                   ],
                 ),
               ),
