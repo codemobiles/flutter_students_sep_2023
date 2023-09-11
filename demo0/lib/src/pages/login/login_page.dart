@@ -52,9 +52,9 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     SizedBox(height: 10),
                     // Login button
-                    ElevatedButton(onPressed: () {}, child: Text("Login")),
+                    ElevatedButton(onPressed: _handleLogin, child: Text("Login")),
                     // Register button
-                    OutlinedButton(onPressed: (){}, child: Text("Register"))
+                    OutlinedButton(onPressed: _handleRegister, child: Text("Register"))
                   ],
                 ),
               ),
@@ -64,4 +64,8 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
+
+  void _handleLogin() {}
+
+  void _handleRegister() {}
 }
