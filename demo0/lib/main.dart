@@ -29,8 +29,9 @@ class _LoginPageState extends State<LoginPage> {
       appBar: AppBar(title: Text("Login")),
       body: Container(
         width: double.infinity,
-        color: Colors.red,
+        color: Colors.red.shade100,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text("Box1"),
             Text("Box2"),
