@@ -28,7 +28,17 @@ class _LoginPageState extends State<LoginPage> {
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [Text("1234")],
+                  children: [
+                    TextField(
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: const InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'codemobiles@gmail.com',
+                        labelText: 'Username',
+                        icon: Icon(Icons.verified_user),
+                      ),
+                    )
+                  ],
                 ),
               ),
             ),
