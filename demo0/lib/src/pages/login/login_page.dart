@@ -107,6 +107,7 @@ class _LoginPageState extends State<LoginPage> {
         TextButton(
             onPressed: () {
               count--;
+              setState(() {});
               print("-- count: $count");
             },
             child: Icon(Icons.remove)),
@@ -114,6 +115,7 @@ class _LoginPageState extends State<LoginPage> {
         TextButton(
             onPressed: () {
               count++;
+              setState(() {});
               print("++ count: $count");
             },
             child: Icon(Icons.add)),
