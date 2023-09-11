@@ -34,9 +34,9 @@ class _LoginPageState extends State<LoginPage> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            MyBox(title: "Box1"),
-            MyBox(title: "Box2"),
-            MyBox(title: "Box3"),
+            MyBox(title: "Box1", color: Colors.red),
+            MyBox(title: "Box2", color: Colors.yellow),
+            MyBox(title: "Box3", color: Colors.orange),
           ],
         ),
       ),
@@ -45,14 +45,15 @@ class _LoginPageState extends State<LoginPage> {
 }
 
 class MyBox extends StatelessWidget {
-  const MyBox({required this.title, super.key});
+  const MyBox({required this.title, super.key, required this.color});
 
   final String title;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.green,
+      color: color,
       child: Text(
         title,
         style: TextStyle(fontSize: 30, color: Colors.white),
