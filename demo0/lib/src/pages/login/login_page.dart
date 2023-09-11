@@ -14,6 +14,9 @@ class _LoginPageState extends State<LoginPage> {
       appBar: AppBar(
         title: Text("LoginPage"),
       ),
+      body: Column(
+        children: [Image.asset("assets/images/logo.png")],
+      ),
     );
   }
 }
