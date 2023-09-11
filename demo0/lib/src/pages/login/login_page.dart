@@ -45,6 +45,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     // Password
                     TextField(
+                      controller: _passwordController,
                       obscureText: true,
                       keyboardType: TextInputType.text,
                       decoration: InputDecoration(
@@ -69,7 +70,9 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  void _handleLogin() {}
+  void _handleLogin() {
+    print("Username: ${_usernameController.text}, Password: ${_passwordController.text}");
+  }
 
   void _handleRegister() {}
 }
