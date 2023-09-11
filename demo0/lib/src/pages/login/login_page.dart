@@ -16,14 +16,13 @@ class _LoginPageState extends State<LoginPage> {
         width: double.infinity,
         color: Colors.red.shade100,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            MyBox(title: "Box1"),
-            MyBox(title: "Box2", color: Colors.yellow),
-            MyBox(title: "Box3", color: Colors.orange),
-            MyBox(title: "Box4", color: Colors.blue),
-            MyBox(title: "Box5", color: Colors.green),
+            Expanded(child: MyBox(title: "Box1")),
+            Expanded(child: MyBox(title: "Box2", color: Colors.yellow)),
+            Expanded(child: MyBox(title: "Box3", color: Colors.orange)),
+            Expanded(child: MyBox(title: "Box4", color: Colors.blue)),
+            Expanded(child: MyBox(title: "Box5", color: Colors.green)),
           ],
         ),
       ),
@@ -40,10 +39,14 @@ class MyBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      alignment: Alignment.center,
       color: color ?? Colors.pink,
       child: Text(
         title,
-        style: TextStyle(fontSize: 30, color: Colors.white),
+        style: TextStyle(
+          fontSize: 30,
+          color: Colors.white,
+        ),
       ),
     );
   }
