@@ -1,0 +1,9 @@
+{
+  "msbuildProjectTools.nuget.includePreRelease": false,
+  "workbench.colorCustomizations": {
+    "tab.activeBorder": "#180101",
+    "tab.unfocusedActiveBorder": "#000000"
+  },
+  "editor.formatOnSave": true
+
+}
