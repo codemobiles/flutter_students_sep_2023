@@ -11,6 +11,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
+  var count = 0;
 
   // Called when widget is created
   @override
@@ -103,9 +104,19 @@ class _LoginPageState extends State<LoginPage> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        TextButton(onPressed: () {}, child: Icon(Icons.remove)),
-        Text("0"),
-        TextButton(onPressed: () {}, child: Icon(Icons.add)),
+        TextButton(
+            onPressed: () {
+              count--;
+              print("-- count: $count");
+            },
+            child: Icon(Icons.remove)),
+        Text("$count"),
+        TextButton(
+            onPressed: () {
+              count++;
+              print("++ count: $count");
+            },
+            child: Icon(Icons.add)),
       ],
     );
   }
