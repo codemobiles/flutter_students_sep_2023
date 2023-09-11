@@ -90,8 +90,9 @@ class _LoginPageState extends State<LoginPage> {
   void _handleLogin() {
     final username = _usernameController.text;
     final password = _passwordController.text;
-
     print("Username: $username, Password: $password");
+
+    Navigator.pushNamed(context, "home");
   }
 
   void _handleRegister() {}
