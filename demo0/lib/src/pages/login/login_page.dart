@@ -16,12 +16,14 @@ class _LoginPageState extends State<LoginPage> {
         width: double.infinity,
         color: Colors.red.shade100,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             MyBox(title: "Box1"),
             MyBox(title: "Box2", color: Colors.yellow),
             MyBox(title: "Box3", color: Colors.orange),
+            MyBox(title: "Box4", color: Colors.blue),
+            MyBox(title: "Box5", color: Colors.green),
           ],
         ),
       ),
