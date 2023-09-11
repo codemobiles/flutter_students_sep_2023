@@ -1,4 +1,4 @@
-import 'package:demo0/src/pages/home/home_page.dart';
+import 'package:demo0/src/pages/app_routes.dart';
 import 'package:demo0/src/pages/login/login_page.dart';
 import 'package:flutter/material.dart';
 
@@ -9,10 +9,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "CMApp",
-      routes: {
-        "login": (context) => LoginPage(),
-        "home": (context) => HomePage(),
-      },
+      routes: AppRoute.all,
       home: LoginPage(),
     );
   }
