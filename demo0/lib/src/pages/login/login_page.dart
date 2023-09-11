@@ -19,6 +19,13 @@ class _LoginPageState extends State<LoginPage> {
         children: [
           const SizedBox(height: 30),
           SizedBox(height: 110, width: double.infinity, child: Image.asset(Asset.logoImage)),
+          // login box
+          Card(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [Text("1234")],
+            ),
+          )
         ],
       ),
     );
