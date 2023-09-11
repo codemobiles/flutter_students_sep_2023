@@ -1,5 +1,7 @@
+import 'package:demo0/src/bloc/login/login_bloc.dart';
 import 'package:demo0/src/constants/asset.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -11,7 +13,6 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
-  var count = 0;
 
   // Called when widget is created
   @override
@@ -104,22 +105,9 @@ class _LoginPageState extends State<LoginPage> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        TextButton(
-            onPressed: () {
-              setState(() {
-                count--;
-              });
-              print("-- count: $count");
-            },
-            child: Icon(Icons.remove)),
-        Text("$count"),
-        TextButton(
-            onPressed: () {
-              count++;
-              setState(() {});
-              print("++ count: $count");
-            },
-            child: Icon(Icons.add)),
+        TextButton(onPressed: () {}, child: Icon(Icons.remove)),
+        Text("${context.read<LoginBloc>().state.count}"),
+        TextButton(onPressed: () {}, child: Icon(Icons.add)),
       ],
     );
   }
