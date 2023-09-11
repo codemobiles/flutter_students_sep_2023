@@ -1,3 +1,4 @@
+import 'package:demo0/src/constants/asset.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -12,10 +13,13 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("LoginPage"),
+        title: const Text("LoginPage"),
       ),
       body: Column(
-        children: [Image.asset("assets/images/logo.png")],
+        children: [
+          const SizedBox(height: 30),
+          SizedBox(height: 110, width: double.infinity, child: Image.asset(Asset.logoImage)),
+        ],
       ),
     );
   }
