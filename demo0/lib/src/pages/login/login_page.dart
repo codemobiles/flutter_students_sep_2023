@@ -20,22 +20,34 @@ class _LoginPageState extends State<LoginPage> {
           const SizedBox(height: 30),
           SizedBox(height: 110, width: double.infinity, child: Image.asset(Asset.logoImage)),
           // login box
-          Padding(
-            padding: const EdgeInsets.only(top: 20.0, left: 30, right: 30),
+          const Padding(
+            padding: EdgeInsets.only(top: 20.0, left: 30, right: 30),
             child: Card(
               elevation: 4,
               child: Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding: EdgeInsets.all(16.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
+                    // Username
                     TextField(
                       keyboardType: TextInputType.emailAddress,
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: 'codemobiles@gmail.com',
                         labelText: 'Username',
                         icon: Icon(Icons.verified_user),
+                      ),
+                    ),
+                    // Password
+                    TextField(
+                      obscureText: true,
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'Password',
+                        labelText: 'Password',
+                        icon: Icon(Icons.password),
                       ),
                     )
                   ],
