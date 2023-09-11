@@ -27,16 +27,19 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Login")),
-      body: Column(
-        children: [
-          Container(
-            width: double.infinity,
-            color: Colors.red,
-            child: Text("I am body"),
-          ),
-          Text("I am body"),
-          Text("I am body"),
-        ],
+      body: Container(
+        color: Colors.yellow,
+        child: Column(
+          children: [
+            Container(
+              width: double.infinity,
+              color: Colors.red,
+              child: Text("I am body"),
+            ),
+            Text("I am body"),
+            Text("I am body"),
+          ],
+        ),
       ),
     );
   }
