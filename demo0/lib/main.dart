@@ -30,6 +30,7 @@ class _LoginPageState extends State<LoginPage> {
       body: Container(
         color: Colors.yellow,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Expanded(
               child: Container(
