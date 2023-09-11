@@ -28,19 +28,8 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       appBar: AppBar(title: Text("Login")),
       body: Container(
-        color: Colors.yellow,
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Expanded(
-              child: Container(
-                color: Colors.red,
-                child: Text("I am body"),
-              ),
-            ),
-            Text("I am body"),
-            Text("I am body"),
-          ],
+          children: [Text("Box1")],
         ),
       ),
     );
