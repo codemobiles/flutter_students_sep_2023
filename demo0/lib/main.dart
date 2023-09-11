@@ -31,10 +31,11 @@ class _LoginPageState extends State<LoginPage> {
         width: double.infinity,
         color: Colors.red.shade100,
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text("Box1"),
-            Text("Box2"),
+            Container(color: Colors.green, child: Text("Box1")),
+            Container(color: Colors.red, child: Text("Box2")),
           ],
         ),
       ),
