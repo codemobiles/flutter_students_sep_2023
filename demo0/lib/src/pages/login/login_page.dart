@@ -76,7 +76,9 @@ class _LoginPageState extends State<LoginPage> {
                     // Login button
                     ElevatedButton(onPressed: _handleLogin, child: Text("Login")),
                     // Register button
-                    OutlinedButton(onPressed: _handleRegister, child: Text("Register"))
+                    OutlinedButton(onPressed: _handleRegister, child: Text("Register")),
+                    // Counter
+                    _buildCounter()
                   ],
                 ),
               ),
@@ -96,4 +98,15 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _handleRegister() {}
+
+  _buildCounter() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        TextButton(onPressed: () {}, child: Icon(Icons.remove)),
+        Text("0"),
+        TextButton(onPressed: () {}, child: Icon(Icons.add)),
+      ],
+    );
+  }
 }
