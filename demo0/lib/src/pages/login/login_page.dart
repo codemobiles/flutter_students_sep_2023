@@ -71,7 +71,10 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _handleLogin() {
-    print("Username: ${_usernameController.text}, Password: ${_passwordController.text}");
+    final username = _usernameController.text;
+    final password = _passwordController.text;
+
+    print("Username: $username, Password: $password");
   }
 
   void _handleRegister() {}
