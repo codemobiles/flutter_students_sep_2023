@@ -8,7 +8,12 @@ part 'login_event.dart';
 part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  LoginBloc() : super(LoginState(count: 0)) {
+  LoginBloc()
+      : super(const LoginState(
+          count: 0,
+          status: LoginStatus.init,
+          dialogMessage: "",
+        )) {
     // Add Event
     on<LoginEventAdd>((event, emit) {
       emit(state.copyWith(count: state.count + 1));
