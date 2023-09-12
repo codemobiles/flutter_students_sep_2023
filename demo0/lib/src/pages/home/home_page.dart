@@ -14,7 +14,20 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
+// final vs const
+
 class _HomePageState extends State<HomePage> {
+  @override
+  initState() {
+    super.initState();
+
+    _loadData();
+  }
+
+  _loadData() async {
+    await Future.delayed(Duration(seconds: 1));
+  }
+
   @override
   Widget build(BuildContext context) {
     final tmp = ["iOS", "Docker"];
@@ -23,8 +36,11 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         appBar: AppBar(title: const Text('Home')),
         drawer: CustomDrawer(),
-        body: Column(
-          children: [...products.map((e) => Text(e))],
+        body: ListView.builder(
+          itemCount: products.length,
+          itemBuilder: (context, index) {
+            return Text(products[index]);
+          },
         ));
   }
 }
