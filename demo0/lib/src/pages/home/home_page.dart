@@ -23,8 +23,6 @@ class HomePage extends StatefulWidget {
 // final vs const
 
 class _HomePageState extends State<HomePage> {
-  List<Product> products = [];
-
   @override
   initState() {
     super.initState();
@@ -37,10 +35,16 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         appBar: AppBar(title: const Text('Home')),
         drawer: CustomDrawer(),
-        body: ListView.builder(
-          itemCount: products.length,
-          itemBuilder: (context, index) {
-            return Text(products[index].name!);
+        body: BlocBuilder<HomeBloc, HomeState>(
+          builder: (context, state) {
+            final products = state.products;
+
+            return ListView.builder(
+              itemCount: products.length,
+              itemBuilder: (context, index) {
+                return Text(products[index].name!);
+              },
+            );
           },
         ));
   }
