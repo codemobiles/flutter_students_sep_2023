@@ -17,10 +17,15 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    final tmp = ["iOS", "Docker"];
+    final products = ["Angular", "Flutter", "React", ...tmp];
+
     return Scaffold(
         appBar: AppBar(title: const Text('Home')),
         drawer: CustomDrawer(),
-        body: Text("Home"));
+        body: Column(
+          children: [...products.map((e) => Text(e))],
+        ));
   }
 }
 
