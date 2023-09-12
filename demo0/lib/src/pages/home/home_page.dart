@@ -1,9 +1,12 @@
 import 'package:demo0/src/bloc/login/login_bloc.dart';
 import 'package:demo0/src/constants/asset.dart';
+import 'package:demo0/src/constants/network_api.dart';
+import 'package:demo0/src/models/product.dart';
 import 'package:demo0/src/pages/app_routes.dart';
 import 'package:demo0/src/pages/home/widgets/dialog_barcode_image.dart';
 import 'package:demo0/src/pages/home/widgets/dialog_qr_image.dart';
 import 'package:demo0/src/pages/home/widgets/dialog_scan_qrcode.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,6 +20,8 @@ class HomePage extends StatefulWidget {
 // final vs const
 
 class _HomePageState extends State<HomePage> {
+  List<Product> products = [];
+
   @override
   initState() {
     super.initState();
@@ -25,21 +30,20 @@ class _HomePageState extends State<HomePage> {
   }
 
   _loadData() async {
-    await Future.delayed(Duration(seconds: 1));
+    final dio = Dio();
+    final result = await dio.get(NetworkAPI.baseURL + "/products");
+    products = productFromJson(result.data);
   }
 
   @override
   Widget build(BuildContext context) {
-    final tmp = ["iOS", "Docker"];
-    final products = ["Angular", "Flutter", "React", ...tmp];
-
     return Scaffold(
         appBar: AppBar(title: const Text('Home')),
         drawer: CustomDrawer(),
         body: ListView.builder(
           itemCount: products.length,
           itemBuilder: (context, index) {
-            return Text(products[index]);
+            return Text(products[index].name!);
           },
         ));
   }
