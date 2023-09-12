@@ -1,9 +1,13 @@
+import 'package:demo0/src/pages/firebase/firebaseauth_page.dart';
+import 'package:demo0/src/pages/firebase/firebasestore_page.dart';
 import 'package:demo0/src/pages/login/login_page.dart';
 import 'package:demo0/src/pages/sqlite/sqlite_page.dart';
 import 'package:flutter/material.dart';
 
 import 'firebase/firebaseanalytics_page.dart';
+import 'firebase/firebasepush_page.dart';
 import 'home/home_page.dart';
+import 'loading/loading_page.dart';
 import 'management/management_page.dart';
 import 'map/map_page.dart';
 
@@ -31,7 +35,6 @@ class AppRoute {
         sqlite: (context) => const SqlitePage(),
         firebase_push: (context) => const FirebasePushNotificationPage(),
         firebase_auth: (context) => const FirebaseAuthPage(),
-        forget_password: (context) => const ForgetPasswordPage(),
         firebase_store: (context) => const FirebaseStorePage(),
         firebase_analytics: (context) => const FirebaseAnalyticsPage(),
       };
