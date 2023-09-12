@@ -31,12 +31,17 @@ class App extends StatelessWidget {
     );
   }
 
+  Future<SharedPreferences> _getPref() async {
+    await Future.delayed(const Duration(seconds: 1));
+    return SharedPreferences.getInstance();
+  }
+
   _initialPage() {
     // final prefs = await SharedPreferences.getInstance();
     // return LoginPage();
 
     return FutureBuilder(
-      future: SharedPreferences.getInstance(),
+      future: _getPref(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
           return Text("Loading...");
