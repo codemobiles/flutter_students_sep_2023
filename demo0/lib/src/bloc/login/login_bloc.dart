@@ -32,6 +32,11 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       final String username = event.user.username;
       final String password = event.user.password;
 
+      // Update status to fetching
+      emit(state.copyWith(status: LoginStatus.fetching));
+
+      await Future.delayed(const Duration(seconds: 2));
+
       if (username == 'admin' && password == '1234') {
         SharedPreferences prefs = await SharedPreferences.getInstance();
         await prefs.setString(NetworkAPI.token, 'TExkgk0494oksrkf');
