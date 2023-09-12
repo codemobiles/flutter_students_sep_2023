@@ -113,6 +113,7 @@ class CustomDrawer extends StatelessWidget {
           ),
           const Spacer(),
           _buildLogoutButton(),
+          const Spacer(),
         ],
       ),
     );
