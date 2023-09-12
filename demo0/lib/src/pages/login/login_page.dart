@@ -99,7 +99,9 @@ class _LoginPageState extends State<LoginPage> {
                               onPressed: (state.status == LoginStatus.fetching)
                                   ? null
                                   : _handleLogin,
-                              child: const Text("Login"));
+                              child: Text((state.status == LoginStatus.fetching)
+                                  ? "Logging in"
+                                  : "Login"));
                         },
                       ),
                       // Register button
