@@ -14,3 +14,6 @@ class LoginEventLogin extends LoginEvent {
   final User user;
   LoginEventLogin(this.user);
 }
+
+// Logout
+class LoginEventLogout extends LoginEvent {}
