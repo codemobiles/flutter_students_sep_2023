@@ -33,6 +33,7 @@ class _HomePageState extends State<HomePage> {
     final dio = Dio();
     final result = await dio.get(NetworkAPI.baseURL + "/products");
     products = productFromJson(result.data);
+    setState(() {});
   }
 
   @override
