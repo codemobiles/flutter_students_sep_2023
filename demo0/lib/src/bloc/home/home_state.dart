@@ -28,4 +28,6 @@ class HomeState extends Equatable {
   List<Object> get props => [products, status, isGrid];
 }
 
+// Interfere
+
 final class HomeInitial extends HomeState {}
