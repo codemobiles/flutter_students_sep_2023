@@ -24,7 +24,6 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({
     Key? key,
@@ -106,11 +105,11 @@ class CustomDrawer extends StatelessWidget {
             title: const Text("FirebaseStore (Option)"),
             leading: const Icon(Icons.storage, color: Colors.red),
           ),
-          ListTile(
-            onTap: () =>
-                Navigator.pushNamed(context, AppRoute.firebase_analytics),
-            title: const Text("FirebaseAnalytic (Option)"),
-            leading: const Icon(Icons.analytics, color: Colors.purpleAccent),
+          const ListTile(
+            leading: Icon(Icons.abc, color: Colors.pink),
+            trailing: Icon(Icons.inbox),
+            title: Text("FirebaseAnalytic (Option)"),
+            onTap: _showDialog,
           ),
           const Spacer(),
           _buildLogoutButton(),
