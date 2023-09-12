@@ -21,7 +21,7 @@ class _LoginPageState extends State<LoginPage> {
     super.initState();
 
     // Initial your application data
-    _usernameController.text = "lek";
+    _usernameController.text = "admin";
     _passwordController.text = "1234";
   }
 
@@ -38,73 +38,76 @@ class _LoginPageState extends State<LoginPage> {
       appBar: AppBar(
         title: const Text("LoginPage"),
       ),
-      body: Column(
-        children: [
-          const SizedBox(height: 30),
-          SizedBox(
-              height: 110,
-              width: double.infinity,
-              child: Image.asset(Asset.logoImage)),
-          // login box
-          Padding(
-            padding: EdgeInsets.only(top: 20.0, left: 30, right: 30),
-            child: Card(
-              elevation: 4,
-              child: Padding(
-                padding: EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    // Username
-                    TextField(
-                      controller: _usernameController,
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: const InputDecoration(
-                        border: InputBorder.none,
-                        hintText: 'codemobiles@gmail.com',
-                        labelText: 'Username',
-                        icon: Icon(Icons.verified_user),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            const SizedBox(height: 30),
+            SizedBox(
+                height: 110,
+                width: double.infinity,
+                child: Image.asset(Asset.logoImage)),
+            // login box
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0, left: 30, right: 30),
+              child: Card(
+                elevation: 4,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      // Username
+                      TextField(
+                        controller: _usernameController,
+                        keyboardType: TextInputType.emailAddress,
+                        decoration: const InputDecoration(
+                          border: InputBorder.none,
+                          hintText: 'codemobiles@gmail.com',
+                          labelText: 'Username',
+                          icon: Icon(Icons.verified_user),
+                        ),
                       ),
-                    ),
-                    // Password
-                    TextField(
-                      controller: _passwordController,
-                      obscureText: true,
-                      keyboardType: TextInputType.text,
-                      decoration: const InputDecoration(
-                        border: InputBorder.none,
-                        hintText: 'Password',
-                        labelText: 'Password',
-                        icon: Icon(Icons.password),
+                      // Password
+                      TextField(
+                        controller: _passwordController,
+                        obscureText: true,
+                        keyboardType: TextInputType.text,
+                        decoration: const InputDecoration(
+                          border: InputBorder.none,
+                          hintText: 'Password',
+                          labelText: 'Password',
+                          icon: Icon(Icons.password),
+                        ),
                       ),
-                    ),
-                    BlocBuilder<LoginBloc, LoginState>(
-                      builder: (context, state) {
-                        if (state.status == LoginStatus.failed) {
-                          return const Text(
-                            "Login failed - invalid username or password",
-                            style: TextStyle(color: Colors.red),
-                          );
-                        } else {
-                          return const SizedBox();
-                        }
-                      },
-                    ),
-                    SizedBox(height: 10),
-                    // Login button
-                    ElevatedButton(
-                        onPressed: _handleLogin, child: Text("Login")),
-                    // Register button
-                    OutlinedButton(
-                        onPressed: _handleRegister, child: Text("Register")),
-                    // Counter
-                    _buildCounter()
-                  ],
+                      BlocBuilder<LoginBloc, LoginState>(
+                        builder: (context, state) {
+                          if (state.status == LoginStatus.failed) {
+                            return const Text(
+                              "Login failed - invalid username or password",
+                              style: TextStyle(color: Colors.red),
+                            );
+                          } else {
+                            return const SizedBox();
+                          }
+                        },
+                      ),
+                      const SizedBox(height: 10),
+                      // Login button
+                      ElevatedButton(
+                          onPressed: _handleLogin, child: const Text("Login")),
+                      // Register button
+                      OutlinedButton(
+                          onPressed: _handleRegister,
+                          child: const Text("Register")),
+                      // Counter
+                      _buildCounter()
+                    ],
+                  ),
                 ),
               ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }
@@ -126,7 +129,7 @@ class _LoginPageState extends State<LoginPage> {
             onPressed: () {
               context.read<LoginBloc>().add(LoginEventRemove());
             },
-            child: Icon(Icons.remove)),
+            child: const Icon(Icons.remove)),
         BlocBuilder<LoginBloc, LoginState>(
           builder: (context, state) {
             return Text("${state.count}");
@@ -136,7 +139,7 @@ class _LoginPageState extends State<LoginPage> {
             onPressed: () {
               context.read<LoginBloc>().add(LoginEventAdd());
             },
-            child: Icon(Icons.add)),
+            child: const Icon(Icons.add)),
       ],
     );
   }
