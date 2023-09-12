@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:demo0/src/constants/network_api.dart';
 import 'package:demo0/src/models/user.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 part 'login_event.dart';
@@ -36,6 +37,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
         // Emit
         emit(state.copyWith(status: LoginStatus.success));
+
+        Navigator.pushReplacementNamed(context, routeName)
+
         // hideKeyboard();
       } else {
         print("Login failed");
