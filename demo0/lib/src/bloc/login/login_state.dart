@@ -12,10 +12,18 @@ class LoginState extends Equatable {
   final LoginStatus status;
   final String dialogMessage;
 
-  LoginState copyWith({int? count}) {
-    return LoginState(count: count ?? this.count);
+  LoginState copyWith({
+    int? count,
+    LoginStatus? status,
+    String? dialogMessage,
+  }) {
+    return LoginState(
+      count: count ?? this.count,
+      status: status ?? this.status,
+      dialogMessage: dialogMessage ?? this.dialogMessage,
+    );
   }
 
   @override
-  List<Object> get props => [count];
+  List<Object> get props => [count, status, dialogMessage];
 }
