@@ -57,5 +57,10 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         emit(state.copyWith(dialogMessage: ""));
       }
     });
+
+    // Logout Event
+    on<LoginEventLogout>(
+      (event, emit) {},
+    );
   }
 }
