@@ -1,7 +1,10 @@
 part of 'login_bloc.dart';
 
 // Add Counter
-class LoginEventAdd {}
+abstract class LoginEvent {}
 
-// Remove1 Counter
-class LoginEventRemove {}
+// Add Counter
+class LoginEventAdd extends LoginEvent {}
+
+// Remove Counter
+class LoginEventRemove extends LoginEvent {}
