@@ -1,5 +1,7 @@
 part of 'login_bloc.dart';
 
-abstract class LoginEvent extends Equatable {
-  const LoginEvent();
-}
+// Add Counter
+class LoginEventAdd {}
+
+// Remove1 Counter
+class LoginEventRemove {}
