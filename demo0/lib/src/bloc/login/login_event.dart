@@ -8,3 +8,9 @@ class LoginEventAdd extends LoginEvent {}
 
 // Remove Counter
 class LoginEventRemove extends LoginEvent {}
+
+// Login
+class LoginEventLogin extends LoginEvent {
+  final User user;
+  LoginEventLogin(this.user);
+}
