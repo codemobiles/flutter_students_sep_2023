@@ -1,7 +1,11 @@
 import 'package:demo0/src/pages/login/login_page.dart';
+import 'package:demo0/src/pages/sqlite/sqlite_page.dart';
 import 'package:flutter/material.dart';
 
+import 'firebase/firebaseanalytics_page.dart';
 import 'home/home_page.dart';
+import 'management/management_page.dart';
+import 'map/map_page.dart';
 
 class AppRoute {
   static const home = 'home';
