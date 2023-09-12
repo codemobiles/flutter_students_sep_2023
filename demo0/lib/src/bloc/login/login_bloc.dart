@@ -34,8 +34,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         // hideKeyboard();
       } else {
         print("Login failed");
-        emit(state.copyWith(dialogMessage: "Login failed", status: LoginStatus.failed));
-        await Future.delayed(Duration(milliseconds: 100));
+        emit(state.copyWith(
+            dialogMessage: "Login failed", status: LoginStatus.failed));
+
         emit(state.copyWith(dialogMessage: ""));
       }
     });

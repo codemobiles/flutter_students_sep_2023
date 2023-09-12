@@ -1,5 +1,6 @@
 import 'package:demo0/src/bloc/login/login_bloc.dart';
 import 'package:demo0/src/constants/asset.dart';
+import 'package:demo0/src/models/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -99,9 +100,8 @@ class _LoginPageState extends State<LoginPage> {
   void _handleLogin() {
     final username = _usernameController.text;
     final password = _passwordController.text;
-    print("Username: $username, Password: $password");
-
-    Navigator.pushNamed(context, "home");
+    final user = User(username, password);
+    context.read<LoginBloc>().add(LoginEventLogin(user));
   }
 
   void _handleRegister() {}
