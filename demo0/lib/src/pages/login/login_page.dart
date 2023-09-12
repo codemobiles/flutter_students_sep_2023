@@ -40,7 +40,10 @@ class _LoginPageState extends State<LoginPage> {
       body: Column(
         children: [
           const SizedBox(height: 30),
-          SizedBox(height: 110, width: double.infinity, child: Image.asset(Asset.logoImage)),
+          SizedBox(
+              height: 110,
+              width: double.infinity,
+              child: Image.asset(Asset.logoImage)),
           // login box
           Padding(
             padding: EdgeInsets.only(top: 20.0, left: 30, right: 30),
@@ -76,9 +79,11 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     SizedBox(height: 10),
                     // Login button
-                    ElevatedButton(onPressed: _handleLogin, child: Text("Login")),
+                    ElevatedButton(
+                        onPressed: _handleLogin, child: Text("Login")),
                     // Register button
-                    OutlinedButton(onPressed: _handleRegister, child: Text("Register")),
+                    OutlinedButton(
+                        onPressed: _handleRegister, child: Text("Register")),
                     // Counter
                     _buildCounter()
                   ],
@@ -105,9 +110,21 @@ class _LoginPageState extends State<LoginPage> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        TextButton(onPressed: () {}, child: Icon(Icons.remove)),
-        Text("${context.read<LoginBloc>().state.count}"),
-        TextButton(onPressed: () {}, child: Icon(Icons.add)),
+        TextButton(
+            onPressed: () {
+              context.read<LoginBloc>().add(LoginEventRemove());
+            },
+            child: Icon(Icons.remove)),
+        BlocBuilder<LoginBloc, LoginState>(
+          builder: (context, state) {
+            return Text("${state.count}");
+          },
+        ),
+        TextButton(
+            onPressed: () {
+              context.read<LoginBloc>().add(LoginEventAdd());
+            },
+            child: Icon(Icons.add)),
       ],
     );
   }
