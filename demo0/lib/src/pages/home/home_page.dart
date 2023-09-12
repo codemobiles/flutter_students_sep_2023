@@ -11,9 +11,14 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Home'),
-        ),
+        appBar: AppBar(title: const Text('Home')),
+        drawer: const Drawer(
+            child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("Menu"),
+          ],
+        )),
         body: Text("Home"));
   }
 }
