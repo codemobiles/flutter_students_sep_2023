@@ -124,7 +124,17 @@ class CustomDrawer extends StatelessWidget {
       context: context,
       builder: (context) {
         return Dialog(
-          child: Text("I am lek"),
+          child: SizedBox(
+            height: 250,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  Text("I am lek"),
+                ],
+              ),
+            ),
+          ),
         );
       },
     );
