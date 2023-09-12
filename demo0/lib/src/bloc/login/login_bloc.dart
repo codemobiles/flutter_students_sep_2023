@@ -40,7 +40,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         // Emit
         emit(state.copyWith(status: LoginStatus.success));
 
-        Navigator.pushNamed(navigatorState.currentContext!, AppRoute.home);
+        Navigator.pushReplacementNamed(
+            navigatorState.currentContext!, AppRoute.home);
 
         // hideKeyboard();
       } else {
