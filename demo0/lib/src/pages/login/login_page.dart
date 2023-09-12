@@ -93,8 +93,15 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       const SizedBox(height: 10),
                       // Login button
-                      ElevatedButton(
-                          onPressed: _handleLogin, child: const Text("Login")),
+                      BlocBuilder<LoginBloc, LoginState>(
+                        builder: (context, state) {
+                          return ElevatedButton(
+                              onPressed: (state.status == LoginStatus.fetching)
+                                  ? null
+                                  : _handleLogin,
+                              child: const Text("Login"));
+                        },
+                      ),
                       // Register button
                       OutlinedButton(
                           onPressed: _handleRegister,
