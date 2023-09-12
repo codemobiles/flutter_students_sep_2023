@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:demo0/src/bloc/home/home_bloc.dart';
 import 'package:demo0/src/bloc/login/login_bloc.dart';
 import 'package:demo0/src/constants/asset.dart';
 import 'package:demo0/src/constants/network_api.dart';
@@ -28,14 +29,7 @@ class _HomePageState extends State<HomePage> {
   initState() {
     super.initState();
 
-    _loadData();
-  }
-
-  _loadData() async {
-    final dio = Dio();
-    final result = await dio.get(NetworkAPI.baseURL + "/products");
-    products = productFromJson(jsonEncode(result.data));
-    setState(() {});
+    context.read<HomeBloc>().add(HomeEventLoadProducts());
   }
 
   @override
