@@ -20,6 +20,7 @@ class App extends StatelessWidget {
       providers: [loginBloc],
       child: MaterialApp(
         title: "CMApp",
+        navigatorKey: navigatorState,
         routes: AppRoute.all,
         home: LoginPage(),
       ),
