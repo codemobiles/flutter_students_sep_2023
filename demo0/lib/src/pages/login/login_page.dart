@@ -59,7 +59,7 @@ class _LoginPageState extends State<LoginPage> {
                     TextField(
                       controller: _usernameController,
                       keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         border: InputBorder.none,
                         hintText: 'codemobiles@gmail.com',
                         labelText: 'Username',
@@ -71,12 +71,24 @@ class _LoginPageState extends State<LoginPage> {
                       controller: _passwordController,
                       obscureText: true,
                       keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         border: InputBorder.none,
                         hintText: 'Password',
                         labelText: 'Password',
                         icon: Icon(Icons.password),
                       ),
+                    ),
+                    BlocBuilder<LoginBloc, LoginState>(
+                      builder: (context, state) {
+                        if (state.status == LoginStatus.failed) {
+                          return const Text(
+                            "Login failed - invalid username or password",
+                            style: TextStyle(color: Colors.red),
+                          );
+                        } else {
+                          return const SizedBox();
+                        }
+                      },
                     ),
                     SizedBox(height: 10),
                     // Login button
