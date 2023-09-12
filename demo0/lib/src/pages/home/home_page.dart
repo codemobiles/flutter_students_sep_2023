@@ -131,6 +131,11 @@ class CustomDrawer extends StatelessWidget {
               child: Column(
                 children: [
                   Text("I am lek"),
+                  ElevatedButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Text("Close"))
                 ],
               ),
             ),
