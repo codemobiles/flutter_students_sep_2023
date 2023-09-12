@@ -3,9 +3,10 @@ part of 'login_bloc.dart';
 class LoginState extends Equatable {
   const LoginState({required this.count});
   final int count;
+  
 
-  LoginState copyWith() {
-    return LoginState(count: count);
+  LoginState copyWith({int? count}) {
+    return LoginState(count: count ?? this.count);
   }
 
   @override
