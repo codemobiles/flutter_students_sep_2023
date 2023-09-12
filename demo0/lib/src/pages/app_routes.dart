@@ -10,8 +10,25 @@ class AppRoute {
   static const map = 'map';
   static const loading = 'loading';
 
+  // Optional Pages
+  static const sqlite = 'sqlite';
+  static const firebase_push = 'firebase_push';
+  static const firebase_auth = 'firebase_auth';
+  static const forget_password = 'forget_password';
+  static const firebase_store = 'firebase_store';
+  static const firebase_analytics = 'firebase_analytics';
+
   static get all => <String, WidgetBuilder>{
         login: (context) => const LoginPage(), // demo how to used widget
         home: (context) => const HomePage(),
+        management: (context) => const ManagementPage(),
+        map: (context) => const MapPage(),
+        loading: (context) => const LoadingPage(),
+        sqlite: (context) => const SqlitePage(),
+        firebase_push: (context) => const FirebasePushNotificationPage(),
+        firebase_auth: (context) => const FirebaseAuthPage(),
+        forget_password: (context) => const ForgetPasswordPage(),
+        firebase_store: (context) => const FirebaseStorePage(),
+        firebase_analytics: (context) => const FirebaseAnalyticsPage(),
       };
 }

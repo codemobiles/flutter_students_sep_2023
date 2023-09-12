@@ -1,3 +1,7 @@
+import 'package:demo0/src/pages/app_routes.dart';
+import 'package:demo0/src/pages/home/widgets/dialog_barcode_image.dart';
+import 'package:demo0/src/pages/home/widgets/dialog_qr_image.dart';
+import 'package:demo0/src/pages/home/widgets/dialog_scan_qrcode.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
