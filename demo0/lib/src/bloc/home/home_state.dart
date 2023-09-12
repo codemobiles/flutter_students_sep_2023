@@ -25,7 +25,7 @@ class HomeState extends Equatable {
   }
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [products, status, isGrid];
 }
 
 final class HomeInitial extends HomeState {}
