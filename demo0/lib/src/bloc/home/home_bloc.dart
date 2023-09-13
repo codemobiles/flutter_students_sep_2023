@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:bloc/bloc.dart';
 import 'package:demo0/src/constants/network_api.dart';
 import 'package:demo0/src/models/product.dart';
+import 'package:demo0/src/services/my_network_service.dart';
 import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
 
@@ -19,6 +20,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       final result = await dio.get(NetworkAPI.baseURL + "/products");
       final products = productFromJson(jsonEncode(result.data));
       emit(state.copyWith(products: products, status: FetchStatus.success));
+
+      MyNetworkService().show();
     });
 
     on<HomeEventToggleDisplay>(
