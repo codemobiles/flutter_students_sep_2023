@@ -31,7 +31,6 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     // log level v,d,i,e,n
     if (kReleaseMode) {
       Logger.level = Level.nothing;
