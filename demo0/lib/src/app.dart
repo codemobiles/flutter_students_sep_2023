@@ -9,6 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'bloc/management/management_bloc.dart';
 import 'constants/network_api.dart';
 
 final formatCurrency = NumberFormat('#,###.000');
@@ -22,11 +23,13 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     final loginBloc = BlocProvider(create: (context) => LoginBloc());
     final homeBloc = BlocProvider(create: (context) => HomeBloc());
+    final managementBloc = BlocProvider(create: (context) => ManagementBloc());
 
     return MultiBlocProvider(
       providers: [
         loginBloc,
         homeBloc,
+        managementBloc,
       ],
       child: MaterialApp(
         title: "CMApp",
