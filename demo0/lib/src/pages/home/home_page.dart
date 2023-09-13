@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
               itemCount: products.length,
               itemBuilder: (context, index) {
                 return SizedBox(
-                    height: 200,
+                    height: 330,
                     child: MyProductItem(product: products[index]));
               },
             );
