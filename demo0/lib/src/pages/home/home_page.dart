@@ -46,7 +46,7 @@ class _HomePageState extends State<HomePage> {
               itemBuilder: (context, index) {
                 return SizedBox(
                     height: 200,
-                    child: MyProductItem({product: products[index]}));
+                    child: MyProductItem(product: products[index]));
               },
             );
           },
