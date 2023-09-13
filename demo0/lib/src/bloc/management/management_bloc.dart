@@ -9,9 +9,12 @@ part 'management_event.dart';
 part 'management_state.dart';
 
 class ManagementBloc extends Bloc<ManagementEvent, ManagementState> {
-  ManagementBloc() : super(ManagementInitial()) {
-    on<ManagementEvent>((event, emit) {
-      // TODO: implement event handler
-    });
+  ManagementBloc() : super(const ManagementState()) {
+    
+    // Submit
+    on<ManagementEventSubmit>((event, emit) {});
+
+    // Delete
+    on<ManagementEventDelete>((event, emit) {});
   }
 }
