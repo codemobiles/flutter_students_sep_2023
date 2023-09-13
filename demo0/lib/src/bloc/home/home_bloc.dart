@@ -15,16 +15,13 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<HomeEventLoadProducts>((event, emit) async {
       emit(state.copyWith(products: [], status: FetchStatus.fetching));
       // await Future.delayed(const Duration(seconds: 1));
-
-      final dio = Dio();
-      final result = await dio.get(NetworkAPI.baseURL + "/products");
-      final products = productFromJson(jsonEncode(result.data));
+      final products = await MyNetworkService().getProduct();
       emit(state.copyWith(products: products, status: FetchStatus.success));
     });
 
     on<HomeEventToggleDisplay>((event, emit) {
       emit(state.copyWith(isGrid: !state.isGrid));
-      
+
       MyNetworkService().show();
     });
   }
