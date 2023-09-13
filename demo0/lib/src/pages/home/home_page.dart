@@ -9,6 +9,7 @@ import 'package:demo0/src/pages/app_routes.dart';
 import 'package:demo0/src/pages/home/widgets/dialog_barcode_image.dart';
 import 'package:demo0/src/pages/home/widgets/dialog_qr_image.dart';
 import 'package:demo0/src/pages/home/widgets/dialog_scan_qrcode.dart';
+import 'package:demo0/src/pages/home/widgets/my_product_item.dart';
 import 'package:demo0/src/pages/home/widgets/product_item.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -43,8 +44,7 @@ class _HomePageState extends State<HomePage> {
             return ListView.builder(
               itemCount: products.length,
               itemBuilder: (context, index) {
-                return SizedBox(
-                    height: 300, child: ProductItem(product: products[index]));
+                return SizedBox(height: 200, child: MyProductItem());
               },
             );
           },
