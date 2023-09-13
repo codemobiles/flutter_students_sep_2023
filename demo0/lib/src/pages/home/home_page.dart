@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:another_flushbar/flushbar.dart';
 import 'package:demo0/src/bloc/home/home_bloc.dart';
 import 'package:demo0/src/bloc/login/login_bloc.dart';
 import 'package:demo0/src/constants/asset.dart';
@@ -46,7 +47,16 @@ class _HomePageState extends State<HomePage> {
               itemBuilder: (context, index) {
                 return SizedBox(
                     height: 320,
-                    child: MyProductItem(product: products[index]));
+                    child: TextButton(
+                        onPressed: () {
+                          Flushbar(
+                            title: "${products[index].name}",
+                            message:
+                                "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+                            duration: Duration(seconds: 3),
+                          ).show(context);
+                        },
+                        child: MyProductItem(product: products[index])));
               },
             );
           },
