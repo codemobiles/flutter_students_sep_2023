@@ -86,73 +86,75 @@ class CustomDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: Column(
-        children: [
-          _buildProfile(),
-          ListTile(
-            onTap: () => _showDialogBarcode(context),
-            title: const Text("BarCode"),
-            leading:
-                const Icon(Icons.bar_chart_outlined, color: Colors.deepOrange),
-          ),
-          ListTile(
-            onTap: () => _showDialogQRImage(context),
-            title: const Text("QRCode"),
-            leading: const Icon(Icons.qr_code, color: Colors.green),
-          ),
-          ListTile(
-            onTap: () => _showScanQRCode(context),
-            title: const Text("Scanner"),
-            leading: const Icon(Icons.qr_code_scanner, color: Colors.blueGrey),
-          ),
-          ListTile(
-            onTap: () => Navigator.pushNamed(context, AppRoute.map),
-            title: const Text("Map"),
-            leading: const Icon(Icons.map_outlined, color: Colors.blue),
-          ),
-          ListTile(
-            onTap: () => Navigator.pushNamed(context, AppRoute.sqlite),
-            title: const Text("SQLite3 (Option)"),
-            leading: const Icon(Icons.table_rows_sharp, color: Colors.blue),
-          ),
-          ListTile(
-            onTap: () => Navigator.pushNamed(context, AppRoute.firebase_push),
-            title: const Text("FirebasePush (Option)"),
-            leading: const Icon(Icons.message, color: Colors.yellow),
-          ),
-          ListTile(
-            onTap: () => Navigator.pushNamed(context, AppRoute.firebase_auth),
-            title: const Text("FirebaseAuth (Option)"),
-            leading: const Icon(Icons.local_fire_department_rounded,
-                color: Colors.orange),
-          ),
-          ListTile(
-            onTap: () => Navigator.pushNamed(context, AppRoute.firebase_store),
-            title: const Text("FirebaseStore (Option)"),
-            leading: const Icon(Icons.storage, color: Colors.red),
-          ),
-          ListTile(
-            leading: Icon(Icons.abc, color: Colors.pink),
-            trailing: Icon(Icons.inbox),
-            title: Text("FirebaseAnalytic (Option)"),
-            onTap: () => _showDialog(context),
-          ),
-          ListTile(
-            leading: Icon(Icons.abc, color: Colors.pink),
-            trailing: Icon(Icons.inbox),
-            title: Text("FirebaseAnalytic (Option)"),
-            onTap: () => _showDialog(context),
-          ),
-          ListTile(
-            leading: Icon(Icons.abc, color: Colors.pink),
-            trailing: Icon(Icons.inbox),
-            title: Text("FirebaseAnalytic (Option)"),
-            onTap: () => _showDialog(context),
-          ),
-          const Spacer(),
-          _buildLogoutButton(),
-          const Spacer(),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            _buildProfile(),
+            ListTile(
+              onTap: () => _showDialogBarcode(context),
+              title: const Text("BarCode"),
+              leading: const Icon(Icons.bar_chart_outlined,
+                  color: Colors.deepOrange),
+            ),
+            ListTile(
+              onTap: () => _showDialogQRImage(context),
+              title: const Text("QRCode"),
+              leading: const Icon(Icons.qr_code, color: Colors.green),
+            ),
+            ListTile(
+              onTap: () => _showScanQRCode(context),
+              title: const Text("Scanner"),
+              leading:
+                  const Icon(Icons.qr_code_scanner, color: Colors.blueGrey),
+            ),
+            ListTile(
+              onTap: () => Navigator.pushNamed(context, AppRoute.map),
+              title: const Text("Map"),
+              leading: const Icon(Icons.map_outlined, color: Colors.blue),
+            ),
+            ListTile(
+              onTap: () => Navigator.pushNamed(context, AppRoute.sqlite),
+              title: const Text("SQLite3 (Option)"),
+              leading: const Icon(Icons.table_rows_sharp, color: Colors.blue),
+            ),
+            ListTile(
+              onTap: () => Navigator.pushNamed(context, AppRoute.firebase_push),
+              title: const Text("FirebasePush (Option)"),
+              leading: const Icon(Icons.message, color: Colors.yellow),
+            ),
+            ListTile(
+              onTap: () => Navigator.pushNamed(context, AppRoute.firebase_auth),
+              title: const Text("FirebaseAuth (Option)"),
+              leading: const Icon(Icons.local_fire_department_rounded,
+                  color: Colors.orange),
+            ),
+            ListTile(
+              onTap: () =>
+                  Navigator.pushNamed(context, AppRoute.firebase_store),
+              title: const Text("FirebaseStore (Option)"),
+              leading: const Icon(Icons.storage, color: Colors.red),
+            ),
+            ListTile(
+              leading: Icon(Icons.abc, color: Colors.pink),
+              trailing: Icon(Icons.inbox),
+              title: Text("FirebaseAnalytic (Option)"),
+              onTap: () => _showDialog(context),
+            ),
+            ListTile(
+              leading: Icon(Icons.abc, color: Colors.pink),
+              trailing: Icon(Icons.inbox),
+              title: Text("FirebaseAnalytic (Option)"),
+              onTap: () => _showDialog(context),
+            ),
+            ListTile(
+              leading: Icon(Icons.abc, color: Colors.pink),
+              trailing: Icon(Icons.inbox),
+              title: Text("FirebaseAnalytic (Option)"),
+              onTap: () => _showDialog(context),
+            ),
+            _buildLogoutButton(),
+          ],
+        ),
       ),
     );
   }
