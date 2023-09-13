@@ -30,8 +30,40 @@ class _ManagementPageState extends State<ManagementPage> {
         title: const Text('Management'),
       ),
       body: Container(
-        child: Text(_product.name),
+        height: 400,
+        padding: EdgeInsets.all(30),
+        child: Card(
+          elevation: 7,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Form(
+              child: Column(
+                children: [
+                  TextFormField(
+                    decoration: _inputStyle("Name"),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
+
+  InputDecoration _inputStyle(String label) => InputDecoration(
+        focusedBorder: const OutlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors.blue,
+            width: 2,
+          ),
+        ),
+        errorText: false ? 'Value Can\'t Be Empty' : null,
+        enabledBorder: const OutlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors.black12,
+          ),
+        ),
+        labelText: label,
+      );
 }
