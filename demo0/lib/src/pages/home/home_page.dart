@@ -40,7 +40,13 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           title: const Text('Home'),
           actions: [
-            IconButton(onPressed: () {}, icon: Icon(Icons.list)),
+            IconButton(onPressed: () {
+              context.read<HomeBloc>().add(HomeEventToggleDisplay());
+            }, icon: BlocBuilder<HomeBloc, HomeState>(
+              builder: (context, state) {
+                return Icon(state.isGrid ? Icons.grid_3x3 : Icons.list);
+              },
+            )),
           ],
         ),
         drawer: CustomDrawer(),
