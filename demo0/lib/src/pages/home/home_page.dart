@@ -47,16 +47,7 @@ class _HomePageState extends State<HomePage> {
               itemBuilder: (context, index) {
                 return SizedBox(
                     height: 320,
-                    child: TextButton(
-                        onPressed: () {
-                          Flushbar(
-                            title: "${products[index].name}",
-                            message:
-                                "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-                            duration: Duration(seconds: 3),
-                          ).show(context);
-                        },
-                        child: MyProductItem(product: products[index])));
+                    child: MyProductItem(product: products[index]));
               },
             );
           },
