@@ -28,6 +28,7 @@ class _ManagementPageState extends State<ManagementPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Management'),
+        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.upload))],
       ),
       body: Container(
         height: 400,
@@ -39,11 +40,27 @@ class _ManagementPageState extends State<ManagementPage> {
             child: Form(
               child: Column(
                 children: [
-                  TextFormField(decoration: _inputStyle("Name")),
+                  // Name
+                  TextFormField(
+                    decoration: _inputStyle("Name"),
+                    onSaved: (newValue) {
+                      _product.name = newValue ?? "";
+                    },
+                  ),
                   const SizedBox(height: 10),
-                  TextFormField(decoration: _inputStyle("Price")),
+                  // Price
+                  TextFormField(
+                      decoration: _inputStyle("Price"),
+                      onSaved: (newValue) {
+                        _product.price = int.parse(newValue ?? "0");
+                      }),
                   const SizedBox(height: 10),
-                  TextFormField(decoration: _inputStyle("Stock")),
+                  // Stock
+                  TextFormField(
+                      decoration: _inputStyle("Stock"),
+                      onSaved: (newValue) {
+                        _product.stock = int.parse(newValue ?? "0");
+                      }),
                 ],
               ),
             ),
