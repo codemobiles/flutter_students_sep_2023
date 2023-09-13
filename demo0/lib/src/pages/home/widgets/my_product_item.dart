@@ -24,7 +24,8 @@ class MyProductItem extends StatelessWidget {
                 color: Colors.black,
                 height: 210,
                 width: double.infinity,
-                child: Image.network("${NetworkAPI.imageURL}/${product.image}"),
+                child: Image.network("${NetworkAPI.imageURL}/${product.image}",
+                    fit: BoxFit.cover),
               )
             ],
           ),
