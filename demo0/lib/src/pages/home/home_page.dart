@@ -54,9 +54,28 @@ class _HomePageState extends State<HomePage> {
           builder: (context, state) {
             final products = state.products;
 
-            return _buildList(products: products);
+            return state.isGrid
+                ? _buildGrid(products: products)
+                : _buildList(products: products);
           },
         ));
+  }
+
+  _buildGrid({required List<Product> products}) {
+    return ListView.builder(
+      itemCount: products.length,
+      itemBuilder: (context, index) {
+        return SizedBox(
+            height: 320,
+            child: MyProductItem(
+              product: products[index],
+              onPressed: () {
+                CustomFlushbar.showSuccess(context,
+                    message: "${products[index].name}");
+              },
+            ));
+      },
+    );
   }
 
   _buildList({required List<Product> products}) {
