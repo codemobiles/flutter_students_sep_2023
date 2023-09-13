@@ -54,12 +54,12 @@ class _HomePageState extends State<HomePage> {
           builder: (context, state) {
             final products = state.products;
 
-            return _buildList();
+            return _buildList(products: products);
           },
         ));
   }
 
-  _buildList() {
+  _buildList({required List<Product> products}) {
     return ListView.builder(
       itemCount: products.length,
       itemBuilder: (context, index) {
