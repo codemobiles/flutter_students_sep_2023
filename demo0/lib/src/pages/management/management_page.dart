@@ -27,7 +27,7 @@ class _ManagementPageState extends State<ManagementPage> {
     if (arguments != null && arguments is Product) {
       _product = arguments;
       _editMode = true;
-      logger.d(_product);
+      _testLog();
     }
 
     return Scaffold(
@@ -62,5 +62,9 @@ class _ManagementPageState extends State<ManagementPage> {
 
   void _callBackSetImage(File? imageFile) {
     _imageFile = imageFile;
+  }
+
+  void _testLog() {
+    logger.d(_product.name);
   }
 }

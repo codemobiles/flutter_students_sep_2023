@@ -20,7 +20,7 @@ final navigatorState = GlobalKey<NavigatorState>();
 // https://pub.dev/packages/logger
 final logger = Logger(
   printer: PrettyPrinter(
-    methodCount: 1,
+    methodCount: 2,
     colors: true,
   ),
 );
