@@ -43,7 +43,8 @@ class _HomePageState extends State<HomePage> {
             return ListView.builder(
               itemCount: products.length,
               itemBuilder: (context, index) {
-                return ProductItem(product: products[index]);
+                return SizedBox(
+                    height: 300, child: ProductItem(product: products[index]));
               },
             );
           },
