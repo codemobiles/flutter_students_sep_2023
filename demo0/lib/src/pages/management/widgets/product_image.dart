@@ -89,6 +89,7 @@ class _ProductImageState extends State<ProductImage> {
       );
 
   void _modalPickerImage() {
+    
     buildListTile(
       IconData icon,
       String title,
@@ -128,8 +129,7 @@ class _ProductImageState extends State<ProductImage> {
   }
 
   void _pickImage(ImageSource source) {
-    _picker
-        .pickImage(
+    _picker.pickImage(
       source: source,
       imageQuality: 70,
       maxHeight: 500,

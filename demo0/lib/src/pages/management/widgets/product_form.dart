@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:demo0/src/models/product.dart';
 import 'package:demo0/src/pages/management/widgets/product_image.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class ProductForm extends StatelessWidget {
   final _spacing = 8.0;
@@ -10,8 +11,9 @@ class ProductForm extends StatelessWidget {
   final Function(File? file) callBackSetImage;
   final Function? deleteProduct;
   final GlobalKey<FormState> formKey;
+  final _picker = ImagePicker();
 
-  const ProductForm(
+  ProductForm(
     this.product, {
     required this.callBackSetImage,
     required this.formKey,
@@ -39,7 +41,7 @@ class ProductForm extends StatelessWidget {
             ],
           ),
           // ignore: dead_code
-          if (false) _buildDemoBottomSheet(context),
+          if (true) _buildDemoBottomSheet(context),
           ProductImage(
             callBackSetImage,
             image: product.image,
@@ -155,6 +157,7 @@ class ProductForm extends StatelessWidget {
                       ListTile(
                         leading: Icon(Icons.camera),
                         title: Text("Browse camera"),
+                        onTap: () {},
                       ),
                       ListTile(
                         leading: Icon(Icons.photo),
