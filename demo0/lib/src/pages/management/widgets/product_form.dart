@@ -40,16 +40,22 @@ class ProductForm extends StatelessWidget {
           ),
           ElevatedButton(
               onPressed: () {
-                showBottomSheet(
+                showModalBottomSheet(
                   context: context,
                   builder: (context) {
-                    return Container(
-                        height: 200,
-                        color: Colors.red,
+                    return const SizedBox(
+                        height: 150,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
-                            Text("555"),
+                            ListTile(
+                              leading: Icon(Icons.camera),
+                              title: Text("Browse camera"),
+                            ),
+                            ListTile(
+                              leading: Icon(Icons.photo),
+                              title: Text("Browse photo"),
+                            )
                           ],
                         ));
                   },
