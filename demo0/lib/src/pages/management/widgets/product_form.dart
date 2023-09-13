@@ -169,7 +169,8 @@ class _ProductFormState extends State<ProductForm> {
                         title: Text("Browse camera"),
                         onTap: () async {
                           final result = await _picker.pickImage(
-                              source: ImageSource.gallery);
+                            source: ImageSource.gallery,
+                          );
                           setState(() {
                             _file = File(result!.path);
                           });
