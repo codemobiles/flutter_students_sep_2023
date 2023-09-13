@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:logger/logger.dart';
 
 import 'bloc/management/management_bloc.dart';
 import 'constants/network_api.dart';
@@ -15,6 +16,14 @@ import 'constants/network_api.dart';
 final formatCurrency = NumberFormat('#,###.000');
 final formatNumber = NumberFormat('#,###');
 final navigatorState = GlobalKey<NavigatorState>();
+
+// https://pub.dev/packages/logger
+final logger = Logger(
+  printer: PrettyPrinter(
+    methodCount: 1,
+    colors: true,
+  ),
+);
 
 class App extends StatelessWidget {
   const App({super.key});
