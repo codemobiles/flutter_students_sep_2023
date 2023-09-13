@@ -38,30 +38,8 @@ class ProductForm extends StatelessWidget {
               ),
             ],
           ),
-          ElevatedButton(
-              onPressed: () {
-                showModalBottomSheet(
-                  context: context,
-                  builder: (context) {
-                    return const SizedBox(
-                        height: 150,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            ListTile(
-                              leading: Icon(Icons.camera),
-                              title: Text("Browse camera"),
-                            ),
-                            ListTile(
-                              leading: Icon(Icons.photo),
-                              title: Text("Browse photo"),
-                            )
-                          ],
-                        ));
-                  },
-                );
-              },
-              child: Text("Browse")),
+          // ignore: dead_code
+          if (false) _buildDemoBottomSheet(context),
           ProductImage(
             callBackSetImage,
             image: product.image,
@@ -161,5 +139,32 @@ class ProductForm extends StatelessWidget {
         );
       },
     );
+  }
+
+  _buildDemoBottomSheet(BuildContext context) {
+    return ElevatedButton(
+        onPressed: () {
+          showModalBottomSheet(
+            context: context,
+            builder: (context) {
+              return const SizedBox(
+                  height: 150,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      ListTile(
+                        leading: Icon(Icons.camera),
+                        title: Text("Browse camera"),
+                      ),
+                      ListTile(
+                        leading: Icon(Icons.photo),
+                        title: Text("Browse photo"),
+                      )
+                    ],
+                  ));
+            },
+          );
+        },
+        child: Text("Browse"));
   }
 }
