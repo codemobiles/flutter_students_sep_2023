@@ -54,22 +54,26 @@ class _HomePageState extends State<HomePage> {
           builder: (context, state) {
             final products = state.products;
 
-            return ListView.builder(
-              itemCount: products.length,
-              itemBuilder: (context, index) {
-                return SizedBox(
-                    height: 320,
-                    child: MyProductItem(
-                      product: products[index],
-                      onPressed: () {
-                        CustomFlushbar.showSuccess(context,
-                            message: "${products[index].name}");
-                      },
-                    ));
-              },
-            );
+            return _buildList();
           },
         ));
+  }
+
+  _buildList() {
+    return ListView.builder(
+      itemCount: products.length,
+      itemBuilder: (context, index) {
+        return SizedBox(
+            height: 320,
+            child: MyProductItem(
+              product: products[index],
+              onPressed: () {
+                CustomFlushbar.showSuccess(context,
+                    message: "${products[index].name}");
+              },
+            ));
+      },
+    );
   }
 }
 
