@@ -137,6 +137,18 @@ class CustomDrawer extends StatelessWidget {
             title: Text("FirebaseAnalytic (Option)"),
             onTap: () => _showDialog(context),
           ),
+          ListTile(
+            leading: Icon(Icons.abc, color: Colors.pink),
+            trailing: Icon(Icons.inbox),
+            title: Text("FirebaseAnalytic (Option)"),
+            onTap: () => _showDialog(context),
+          ),
+          ListTile(
+            leading: Icon(Icons.abc, color: Colors.pink),
+            trailing: Icon(Icons.inbox),
+            title: Text("FirebaseAnalytic (Option)"),
+            onTap: () => _showDialog(context),
+          ),
           const Spacer(),
           _buildLogoutButton(),
           const Spacer(),
