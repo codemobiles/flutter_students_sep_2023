@@ -1,10 +1,24 @@
 part of 'management_bloc.dart';
 
-sealed class ManagementState extends Equatable {
-  const ManagementState();
-  
-  @override
-  List<Object> get props => [];
-}
+enum SubmitStatus { submitting, success, failed, init }
 
-final class ManagementInitial extends ManagementState {}
+class ManagementState extends Equatable {
+  final SubmitStatus status;
+  const ManagementState({this.status = SubmitStatus.init});
+
+  copyWith({
+    SubmitStatus? status,
+  }) {
+    return ManagementState(
+      status: status ?? this.status,
+    );
+  }
+
+  @override
+  String toString() {
+    return '''ManagementState { status: $status }''';
+  }
+
+  @override
+  List<Object> get props => [status];
+}
