@@ -5,13 +5,11 @@ import 'package:demo0/src/pages/management/widgets/product_image.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-class ProductForm extends StatelessWidget {
-  final _spacing = 8.0;
+class ProductForm extends StatefulWidget {
   final Product product;
   final Function(File? file) callBackSetImage;
   final Function? deleteProduct;
   final GlobalKey<FormState> formKey;
-  final _picker = ImagePicker();
 
   ProductForm(
     this.product, {
@@ -22,9 +20,20 @@ class ProductForm extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<ProductForm> createState() => _ProductFormState();
+}
+
+class _ProductFormState extends State<ProductForm> {
+  final _spacing = 8.0;
+
+  final _picker = ImagePicker();
+
+  File? _file;
+
+  @override
   Widget build(BuildContext context) {
     return Form(
-      key: formKey,
+      key: widget.formKey,
       child: Column(
         children: <Widget>[
           _buildNameInput(),
@@ -42,12 +51,13 @@ class ProductForm extends StatelessWidget {
           ),
           // ignore: dead_code
           if (true) _buildDemoBottomSheet(context),
+          if (_file != null) SizedBox(height: 50, child: Image.file(_file!)),
           ProductImage(
-            callBackSetImage,
-            image: product.image,
+            widget.callBackSetImage,
+            image: widget.product.image,
           ),
           const SizedBox(height: 28),
-          if (deleteProduct != null) _buildDeleteButton(context),
+          if (widget.deleteProduct != null) _buildDeleteButton(context),
           const SizedBox(height: 80),
         ],
       ),
@@ -71,15 +81,15 @@ class ProductForm extends StatelessWidget {
       );
 
   TextFormField _buildNameInput() => TextFormField(
-        initialValue: product.name,
+        initialValue: widget.product.name,
         decoration: _inputStyle('name'),
         onSaved: (String? value) {
-          product.name = value ?? "";
+          widget.product.name = value ?? "";
         },
       );
 
   TextFormField _buildPriceInput() => TextFormField(
-        initialValue: product.price.toString(),
+        initialValue: widget.product.price.toString(),
         decoration: _inputStyle('price'),
         keyboardType: TextInputType.number,
         onSaved: (String? value) {
@@ -87,12 +97,12 @@ class ProductForm extends StatelessWidget {
           if (value != null && value.isNotEmpty) {
             price = int.parse(value);
           }
-          product.price = price;
+          widget.product.price = price;
         },
       );
 
   TextFormField _buildStockInput() => TextFormField(
-        initialValue: product.stock.toString(),
+        initialValue: widget.product.stock.toString(),
         decoration: _inputStyle('stock'),
         keyboardType: TextInputType.number,
         onSaved: (String? value) {
@@ -100,7 +110,7 @@ class ProductForm extends StatelessWidget {
           if (value != null && value.isNotEmpty) {
             stock = int.parse(value);
           }
-          product.stock = stock;
+          widget.product.stock = stock;
         },
       );
 
@@ -134,7 +144,7 @@ class ProductForm extends StatelessWidget {
               ),
               onPressed: () {
                 Navigator.of(dialogContext).pop();
-                deleteProduct!();
+                widget.deleteProduct!();
               },
             ),
           ],
@@ -149,7 +159,7 @@ class ProductForm extends StatelessWidget {
           showModalBottomSheet(
             context: context,
             builder: (context) {
-              return const SizedBox(
+              return SizedBox(
                   height: 150,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -157,12 +167,18 @@ class ProductForm extends StatelessWidget {
                       ListTile(
                         leading: Icon(Icons.camera),
                         title: Text("Browse camera"),
-                        onTap: () {},
+                        onTap: () async {
+                          final result = await _picker.pickImage(
+                              source: ImageSource.gallery);
+                          setState(() {
+                            _file = File(result!.path);
+                          });
+                        },
                       ),
-                      ListTile(
+                      const ListTile(
                         leading: Icon(Icons.photo),
                         title: Text("Browse photo"),
-                      )
+                      ),
                     ],
                   ));
             },
