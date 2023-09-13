@@ -12,19 +12,19 @@ String productToJson(List<Product> data) =>
 
 class Product {
   int? id;
-  String? name;
+  String name;
   String? image;
-  int? stock;
-  int? price;
+  int stock;
+  int price;
   DateTime? createdAt;
   DateTime? updatedAt;
 
   Product({
     this.id,
-    this.name,
+    required this.name,
     this.image,
-    this.stock,
-    this.price,
+    required this.stock,
+    required this.price,
     this.createdAt,
     this.updatedAt,
   });
