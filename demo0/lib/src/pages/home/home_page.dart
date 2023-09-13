@@ -12,6 +12,7 @@ import 'package:demo0/src/pages/home/widgets/dialog_qr_image.dart';
 import 'package:demo0/src/pages/home/widgets/dialog_scan_qrcode.dart';
 import 'package:demo0/src/pages/home/widgets/my_product_item.dart';
 import 'package:demo0/src/pages/home/widgets/product_item.dart';
+import 'package:demo0/src/widgets/custom_flushbar.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -36,7 +37,12 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text('Home')),
+        appBar: AppBar(
+          title: const Text('Home'),
+          actions: [
+            IconButton(onPressed: () {}, icon: Icon(Icons.list)),
+          ],
+        ),
         drawer: CustomDrawer(),
         body: BlocBuilder<HomeBloc, HomeState>(
           builder: (context, state) {
@@ -47,7 +53,13 @@ class _HomePageState extends State<HomePage> {
               itemBuilder: (context, index) {
                 return SizedBox(
                     height: 320,
-                    child: MyProductItem(product: products[index]));
+                    child: MyProductItem(
+                      product: products[index],
+                      onPressed: () {
+                        CustomFlushbar.showSuccess(context,
+                            message: "${products[index].name}");
+                      },
+                    ));
               },
             );
           },

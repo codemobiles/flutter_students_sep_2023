@@ -20,5 +20,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       final products = productFromJson(jsonEncode(result.data));
       emit(state.copyWith(products: products, status: FetchStatus.success));
     });
+
+    on<HomeEventToggleDisplay>(
+        (event, emit) => emit(state.copyWith(isGrid: !state.isGrid)));
   }
 }

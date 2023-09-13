@@ -5,3 +5,6 @@ abstract class HomeEvent {
 }
 
 class HomeEventLoadProducts extends HomeEvent {}
+
+// Toggle display
+class HomeEventToggleDisplay extends HomeEvent {}
