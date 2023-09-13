@@ -38,6 +38,24 @@ class ProductForm extends StatelessWidget {
               ),
             ],
           ),
+          ElevatedButton(
+              onPressed: () {
+                showBottomSheet(
+                  context: context,
+                  builder: (context) {
+                    return Container(
+                        height: 200,
+                        color: Colors.red,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            Text("555"),
+                          ],
+                        ));
+                  },
+                );
+              },
+              child: Text("Browse")),
           ProductImage(
             callBackSetImage,
             image: product.image,
