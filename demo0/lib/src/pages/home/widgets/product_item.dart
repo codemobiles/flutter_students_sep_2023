@@ -3,10 +3,11 @@ import 'dart:io';
 import 'package:demo0/src/app.dart';
 import 'package:demo0/src/constants/network_api.dart';
 import 'package:demo0/src/models/product.dart';
+import 'package:demo0/src/widgets/custom_flushbar.dart';
 import 'package:demo0/src/widgets/image_not_found.dart';
 import 'package:flutter/material.dart';
 
-class ProductItem extends StatelessWidget {
+class ProductItem extends StatefulWidget {
   const ProductItem({
     required this.product,
     this.onTap,
@@ -19,12 +20,17 @@ class ProductItem extends StatelessWidget {
   final bool? isGrid;
 
   @override
+  State<ProductItem> createState() => ProductItemState();
+}
+
+class ProductItemState extends State<ProductItem> {
+  @override
   Widget build(BuildContext context) {
     return TextButton(
       style: TextButton.styleFrom(
         padding: const EdgeInsets.all(0),
       ),
-      onPressed: onTap,
+      onPressed: widget.onTap,
       child: LayoutBuilder(
         builder: (context, constraint) => Card(
           color: Colors.white,
@@ -39,17 +45,21 @@ class ProductItem extends StatelessWidget {
     );
   }
 
+  show() {
+    CustomFlushbar.showSuccess(context, message: widget.product.name);
+  }
+
   Stack _buildImage(double maxHeight) {
     // caes of listview
     var height = maxHeight * 0.7;
 
     // case of grid
-    if (isGrid != null && isGrid == true) {
+    if (widget.isGrid != null && widget.isGrid == true) {
       height = maxHeight * 0.6;
     }
 
-    final image = product.image;
-    final stock = product.stock;
+    final image = widget.product.image;
+    final stock = widget.product.stock;
 
     return Stack(
       children: [
@@ -73,8 +83,8 @@ class ProductItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                product.name,
-                style: (isGrid ?? false)
+                widget.product.name,
+                style: (widget.isGrid ?? false)
                     ? const TextStyle(
                         fontSize: 14, fontWeight: FontWeight.normal)
                     : const TextStyle(
@@ -86,18 +96,20 @@ class ProductItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    '฿${formatCurrency.format(product.price)}',
+                    '฿${formatCurrency.format(widget.product.price)}',
                     style: TextStyle(
-                      fontSize:
-                          isGrid ?? false ? getSubtitleFontSizeForGrid() : 18,
+                      fontSize: widget.isGrid ?? false
+                          ? getSubtitleFontSizeForGrid()
+                          : 18,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   Text(
-                    '${formatNumber.format(product.stock)} pieces',
+                    '${formatNumber.format(widget.product.stock)} pieces',
                     style: TextStyle(
-                      fontSize:
-                          isGrid ?? false ? getSubtitleFontSizeForGrid() : 18,
+                      fontSize: widget.isGrid ?? false
+                          ? getSubtitleFontSizeForGrid()
+                          : 18,
                       fontWeight: FontWeight.bold,
                       color: Colors.deepOrangeAccent,
                     ),
