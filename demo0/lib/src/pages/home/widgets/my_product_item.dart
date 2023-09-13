@@ -8,6 +8,14 @@ class MyProductItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(product.name);
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Card(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(product.name),
+        ),
+      ),
+    );
   }
 }
