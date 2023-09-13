@@ -39,9 +39,11 @@ class _ManagementPageState extends State<ManagementPage> {
             child: Form(
               child: Column(
                 children: [
-                  TextFormField(
-                    decoration: _inputStyle("Name"),
-                  ),
+                  TextFormField(decoration: _inputStyle("Name")),
+                  const SizedBox(height: 10),
+                  TextFormField(decoration: _inputStyle("Price")),
+                  const SizedBox(height: 10),
+                  TextFormField(decoration: _inputStyle("Stock")),
                 ],
               ),
             ),
