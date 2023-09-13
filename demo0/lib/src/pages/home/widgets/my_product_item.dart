@@ -20,12 +20,15 @@ class MyProductItem extends StatelessWidget {
             children: [
               Text(product.name),
               Text("${product.price} บาท"),
-              Container(
-                color: Colors.black,
-                height: 210,
-                width: double.infinity,
-                child: Image.network("${NetworkAPI.imageURL}/${product.image}",
-                    fit: BoxFit.cover),
+              Padding(
+                padding: const EdgeInsets.only(top: 18.0, left: 8, right: 8),
+                child: SizedBox(
+                  height: 210,
+                  width: double.infinity,
+                  child: Image.network(
+                      "${NetworkAPI.imageURL}/${product.image}",
+                      fit: BoxFit.cover),
+                ),
               )
             ],
           ),
