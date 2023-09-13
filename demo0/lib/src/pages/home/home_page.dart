@@ -119,10 +119,14 @@ class _HomePageState extends State<HomePage> {
           child: GridView.builder(
             padding: const EdgeInsets.only(top: 10),
             itemBuilder: (context, index) {
+              final productItemState = GlobalKey<ProductItemState>();
+
               return ProductItem(
+                key: productItemState,
                 isGrid: true,
                 product: products[index],
-                onTap: () => _navigateManagementPage(products[index]),
+                // onTap: () => _navigateManagementPage(products[index]),
+                onTap: () => productItemState.currentState?.show(),
               );
             },
             itemCount: products.length,
