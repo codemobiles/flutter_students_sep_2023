@@ -4,11 +4,12 @@ import 'package:demo0/src/pages/app_routes.dart';
 import 'package:demo0/src/pages/home/home_page.dart';
 import 'package:demo0/src/pages/loading/loading_page.dart';
 import 'package:demo0/src/pages/login/login_page.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:logger/logger.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'bloc/management/management_bloc.dart';
 import 'constants/network_api.dart';
@@ -20,7 +21,7 @@ final navigatorState = GlobalKey<NavigatorState>();
 // https://pub.dev/packages/logger
 final logger = Logger(
   printer: PrettyPrinter(
-    methodCount: 2,
+    methodCount: 1,
     colors: true,
   ),
 );
@@ -30,6 +31,14 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
+    // log level v,d,i,e,n
+    if (kReleaseMode) {
+      Logger.level = Level.nothing;
+    } else {
+      Logger.level = Level.debug;
+    }
+
     final loginBloc = BlocProvider(create: (context) => LoginBloc());
     final homeBloc = BlocProvider(create: (context) => HomeBloc());
     final managementBloc = BlocProvider(create: (context) => ManagementBloc());
