@@ -8,6 +8,6 @@ class MyProductItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text("xxxx");
+    return Text(product.name);
   }
 }
