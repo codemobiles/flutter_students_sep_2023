@@ -20,7 +20,10 @@ class MyProductItem extends StatelessWidget {
             children: [
               Text(product.name),
               Text("${product.price} บาท"),
-              Image.network("${NetworkAPI.imageURL}/${product.image}")
+              SizedBox(
+                  height: 70,
+                  child:
+                      Image.network("${NetworkAPI.imageURL}/${product.image}"))
             ],
           ),
         ),
