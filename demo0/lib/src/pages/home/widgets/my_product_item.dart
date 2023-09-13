@@ -18,7 +18,13 @@ class MyProductItem extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(product.name),
+              Text(
+                product.name,
+                style: const TextStyle(fontSize: 18),
+                softWrap: false,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
               Text("${product.price} บาท"),
               Padding(
                 padding: const EdgeInsets.only(top: 18.0, left: 8, right: 8),
