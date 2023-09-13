@@ -50,7 +50,7 @@ class _ProductFormState extends State<ProductForm> {
             ],
           ),
           // ignore: dead_code
-          if (true) _buildDemoBottomSheet(context),
+          if (false) _buildDemoBottomSheet(context),
           if (_file != null) SizedBox(height: 50, child: Image.file(_file!)),
           ProductImage(
             widget.callBackSetImage,
