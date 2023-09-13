@@ -62,7 +62,13 @@ class _HomePageState extends State<HomePage> {
   }
 
   _buildGrid({required List<Product> products}) {
-    return ListView.builder(
+    return GridView.builder(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        crossAxisSpacing: 1,
+        mainAxisSpacing: 1,
+        childAspectRatio: 0.9, // set height ratio -  (itemWidth / itemHeight)
+      ),
       itemCount: products.length,
       itemBuilder: (context, index) {
         return SizedBox(
