@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:demo0/src/models/product.dart';
+import 'package:demo0/src/widgets/custom_flushbar.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -28,7 +29,16 @@ class _ManagementPageState extends State<ManagementPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Management'),
-        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.upload))],
+        actions: [
+          IconButton(
+              onPressed: () {
+                _form.currentState?.save();
+                CustomFlushbar.showSuccess(context,
+                    message:
+                        "${_product.name}, ${_product.stock}, ${_product.price}, ");
+              },
+              icon: const Icon(Icons.upload))
+        ],
       ),
       body: Container(
         height: 400,
@@ -38,6 +48,7 @@ class _ManagementPageState extends State<ManagementPage> {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Form(
+              key: _form,
               child: Column(
                 children: [
                   // Name
