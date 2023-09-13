@@ -1,15 +1,18 @@
 import 'dart:io';
 
+import 'package:demo0/src/bloc/management/management_bloc.dart';
 import 'package:demo0/src/models/product.dart';
-import 'package:demo0/src/widgets/custom_flushbar.dart';
-import 'package:flutter/foundation.dart';
+import 'package:demo0/src/pages/management/widgets/product_form.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../app.dart';
 
 class ManagementPage extends StatefulWidget {
-  const ManagementPage({super.key});
+  const ManagementPage({Key? key}) : super(key: key);
 
   @override
-  State<ManagementPage> createState() => _ManagementPageState();
+  _ManagementPageState createState() => _ManagementPageState();
 }
 
 class _ManagementPageState extends State<ManagementPage> {
@@ -24,76 +27,40 @@ class _ManagementPageState extends State<ManagementPage> {
     if (arguments != null && arguments is Product) {
       _product = arguments;
       _editMode = true;
+      logger.d(_product);
     }
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Management'),
-        actions: [
-          IconButton(
-              onPressed: () {
-                _form.currentState?.save();
-                CustomFlushbar.showSuccess(context,
-                    message:
-                        "${_product.name}, ${_product.stock}, ${_product.price}, ");
-              },
-              icon: const Icon(Icons.upload))
-        ],
-      ),
-      body: Container(
-        height: 400,
-        padding: EdgeInsets.all(30),
-        child: Card(
-          elevation: 7,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Form(
-              key: _form,
-              child: Column(
-                children: [
-                  // Name
-                  TextFormField(
-                    decoration: _inputStyle("Name"),
-                    onSaved: (newValue) {
-                      _product.name = newValue ?? "";
-                    },
-                  ),
-                  const SizedBox(height: 10),
-                  // Price
-                  TextFormField(
-                      decoration: _inputStyle("Price"),
-                      onSaved: (newValue) {
-                        _product.price = int.parse(newValue ?? "0");
-                      }),
-                  const SizedBox(height: 10),
-                  // Stock
-                  TextFormField(
-                      decoration: _inputStyle("Stock"),
-                      onSaved: (newValue) {
-                        _product.stock = int.parse(newValue ?? "0");
-                      }),
-                ],
-              ),
-            ),
+      appBar: AppBar(title: Text("Management"), actions: [
+        IconButton(
+            icon: Icon(Icons.upload),
+            onPressed: () =>
+                context.read<ManagementBloc>().add(ManagementEventSubmit(
+                      product: _product,
+                      image: _imageFile,
+                      isEditMode: _editMode,
+                      form: _form,
+                    ))),
+      ]),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(30.0),
+          child: ProductForm(
+            _product,
+            callBackSetImage: _callBackSetImage,
+            formKey: _form,
+            deleteProduct: _editMode ? _deleteProduct : null,
           ),
         ),
       ),
     );
   }
 
-  InputDecoration _inputStyle(String label) => InputDecoration(
-        focusedBorder: const OutlineInputBorder(
-          borderSide: BorderSide(
-            color: Colors.blue,
-            width: 2,
-          ),
-        ),
-        errorText: false ? 'Value Can\'t Be Empty' : null,
-        enabledBorder: const OutlineInputBorder(
-          borderSide: BorderSide(
-            color: Colors.black12,
-          ),
-        ),
-        labelText: label,
-      );
+  void _deleteProduct() {
+    context.read<ManagementBloc>().add(ManagementEventDelete(_product.id!));
+  }
+
+  void _callBackSetImage(File? imageFile) {
+    _imageFile = imageFile;
+  }
 }

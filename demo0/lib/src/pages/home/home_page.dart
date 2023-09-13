@@ -125,8 +125,8 @@ class _HomePageState extends State<HomePage> {
                 key: productItemState,
                 isGrid: true,
                 product: products[index],
-                // onTap: () => _navigateManagementPage(products[index]),
-                onTap: () => productItemState.currentState?.show(),
+                onTap: () => _navigateManagementPage(products[index]),
+                // onTap: () => productItemState.currentState?.show(),
               );
             },
             itemCount: products.length,
