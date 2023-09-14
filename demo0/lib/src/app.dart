@@ -4,6 +4,7 @@ import 'package:demo0/src/pages/app_routes.dart';
 import 'package:demo0/src/pages/home/home_page.dart';
 import 'package:demo0/src/pages/loading/loading_page.dart';
 import 'package:demo0/src/pages/login/login_page.dart';
+import 'package:demo0/src/pages/map/map_page.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -75,7 +76,7 @@ class App extends StatelessWidget {
           final prefs = snapshot.data!;
           final token = prefs.getString(NetworkAPI.token);
           if (token != null) {
-            return HomePage();
+            return MapPage();
           } else {
             return LoginPage();
           }
