@@ -86,15 +86,16 @@ class _MapPageState extends State<MapPage> {
             Image.asset(Asset.logoImage),
             Expanded(
               child: GoogleMap(
+                trafficEnabled: true,
                 onMapCreated: (controller) {
                   _controller.complete(controller);
                 },
                 initialCameraPosition: _initMap,
                 markers: {
-                  Marker(
-                    markerId: MarkerId("xx"),
-                    position: _initMap.target,
-                  )
+                  ..._dummyLatLng.map((e) => Marker(
+                        markerId: MarkerId("${e.latitude},${e.longitude}"),
+                        position: e,
+                      ))
                 },
               ),
             )
