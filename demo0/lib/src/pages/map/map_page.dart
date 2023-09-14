@@ -91,12 +91,7 @@ class _MapPageState extends State<MapPage> {
                   _controller.complete(controller);
                 },
                 initialCameraPosition: _initMap,
-                markers: {
-                  ..._dummyLatLng.map((e) => Marker(
-                        markerId: MarkerId("${e.latitude},${e.longitude}"),
-                        position: e,
-                      ))
-                },
+                markers: _markers,
               ),
             )
           ],
