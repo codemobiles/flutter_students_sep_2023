@@ -21,7 +21,7 @@ class _DialogScanQRCodeState extends State<DialogScanQRCode> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(code),
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             Stack(
               alignment: Alignment.center,
               children: [
@@ -39,7 +39,7 @@ class _DialogScanQRCodeState extends State<DialogScanQRCode> {
                     alignment: Alignment.center,
                     width: double.infinity,
                     color: Colors.black26,
-                    child: Text(
+                    child: const Text(
                       "Debug",
                       style: TextStyle(color: Colors.white),
                     ),
@@ -48,11 +48,11 @@ class _DialogScanQRCodeState extends State<DialogScanQRCode> {
               ],
             ),
             Container(
-              margin: EdgeInsets.only(top: 12),
+              margin: const EdgeInsets.only(top: 12),
               width: double.infinity,
               child: TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: Text('close'),
+                child: const Text('close'),
               ),
             )
           ],
