@@ -31,13 +31,18 @@ class _DialogScanQRCodeState extends State<DialogScanQRCode> {
                   width: double.infinity,
                   height: 1,
                 ),
-                Container(
-                  alignment: Alignment.center,
-                  width: double.infinity,
-                  color: Colors.black26,
-                  child: Text(
-                    "Debug",
-                    style: TextStyle(color: Colors.white),
+                Positioned(
+                  top: 10,
+                  right: 10,
+                  width: 80,
+                  child: Container(
+                    alignment: Alignment.center,
+                    width: double.infinity,
+                    color: Colors.black26,
+                    child: Text(
+                      "Debug",
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                 )
               ],
