@@ -1,5 +1,6 @@
 import 'package:demo0/src/bloc/home/home_bloc.dart';
 import 'package:demo0/src/bloc/login/login_bloc.dart';
+import 'package:demo0/src/bloc/map/map_bloc.dart';
 import 'package:demo0/src/pages/app_routes.dart';
 import 'package:demo0/src/pages/home/home_page.dart';
 import 'package:demo0/src/pages/loading/loading_page.dart';
@@ -42,12 +43,14 @@ class App extends StatelessWidget {
     final loginBloc = BlocProvider(create: (context) => LoginBloc());
     final homeBloc = BlocProvider(create: (context) => HomeBloc());
     final managementBloc = BlocProvider(create: (context) => ManagementBloc());
+    final mapBloc = BlocProvider(create: (context) => MapBloc());
 
     return MultiBlocProvider(
       providers: [
         loginBloc,
         homeBloc,
         managementBloc,
+        mapBloc,
       ],
       child: MaterialApp(
         title: "CMApp",

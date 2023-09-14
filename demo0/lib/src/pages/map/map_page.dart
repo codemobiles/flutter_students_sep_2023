@@ -78,7 +78,15 @@ class _MapPageState extends State<MapPage> {
           children: [
             Image.asset(Asset.logoImage),
             Expanded(
-              child: GoogleMap(initialCameraPosition: _initMap),
+              child: GoogleMap(
+                initialCameraPosition: _initMap,
+                markers: {
+                  Marker(
+                    markerId: MarkerId("xx"),
+                    position: _initMap.target,
+                  )
+                },
+              ),
             )
           ],
         ));
