@@ -72,9 +72,7 @@ class _MapPageState extends State<MapPage> {
                   );
                 },
                 icon: Icon(Icons.pin_drop)),
-            IconButton(onPressed: () {
-              
-            }, icon: Icon(Icons.pin_drop_outlined))
+            IconButton(onPressed: () {}, icon: Icon(Icons.pin_drop_outlined))
           ],
         ),
         body: Column(
@@ -82,6 +80,9 @@ class _MapPageState extends State<MapPage> {
             Image.asset(Asset.logoImage),
             Expanded(
               child: GoogleMap(
+                onMapCreated: (controller) {
+                  _controller.complete(controller);
+                },
                 initialCameraPosition: _initMap,
                 markers: {
                   Marker(
