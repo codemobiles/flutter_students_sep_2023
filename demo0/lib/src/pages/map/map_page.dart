@@ -92,6 +92,15 @@ class _MapPageState extends State<MapPage> {
                 },
                 initialCameraPosition: _initMap,
                 markers: _markers,
+                polygons: {
+                  // dot, line, vector, polygon
+                  Polygon(
+                      polygonId: PolygonId("xxxx"),
+                      points: _dummyLatLng,
+                      fillColor: Colors.purple.withOpacity(0.3),
+                      strokeColor: Colors.yellow,
+                      strokeWidth: 2)
+                },
                 onTap: (latLng) => _buildSingleMarker(position: latLng),
               ),
             )
@@ -172,7 +181,7 @@ class _MapPageState extends State<MapPage> {
       icon: bitmap,
       infoWindow: InfoWindow(
         title: formatPosition(position),
-        snippet: "",
+        snippet: "xxx",
         onTap: () =>
             _launchMaps(lat: position.latitude, lng: position.longitude),
       ),
