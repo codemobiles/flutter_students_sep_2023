@@ -92,6 +92,7 @@ class _MapPageState extends State<MapPage> {
                 },
                 initialCameraPosition: _initMap,
                 markers: _markers,
+                onTap: (latLng) => _buildSingleMarker(position: latLng),
               ),
             )
           ],
