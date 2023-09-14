@@ -2,7 +2,9 @@ import 'package:barcode_widget/barcode_widget.dart';
 import 'package:flutter/material.dart';
 
 class MyDialogBarCode extends StatelessWidget {
-  const MyDialogBarCode({super.key});
+  const MyDialogBarCode({required this.code, super.key});
+
+  final String code;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +17,7 @@ class MyDialogBarCode extends StatelessWidget {
           children: [
             BarcodeWidget(
               barcode: Barcode.code128(),
-              data: 'https://pub.dev/packages/barcode_widget', // Content
+              data: code, // Content
               width: 100,
               height: 100,
             ),

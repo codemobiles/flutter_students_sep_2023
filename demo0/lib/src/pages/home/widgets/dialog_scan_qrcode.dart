@@ -22,14 +22,26 @@ class _DialogScanQRCodeState extends State<DialogScanQRCode> {
           children: [
             Text(code),
             SizedBox(height: 12),
-            Stack(alignment: Alignment.center, children: [
-              _buildQRView(),
-              Container(
-                color: Colors.red,
-                width: double.infinity,
-                height: 1,
-              )
-            ]),
+            Stack(
+              alignment: Alignment.center,
+              children: [
+                _buildQRView(),
+                Container(
+                  color: Colors.yellow,
+                  width: double.infinity,
+                  height: 1,
+                ),
+                Container(
+                  alignment: Alignment.center,
+                  width: double.infinity,
+                  color: Colors.black26,
+                  child: Text(
+                    "Debug",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                )
+              ],
+            ),
             Container(
               margin: EdgeInsets.only(top: 12),
               width: double.infinity,
