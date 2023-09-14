@@ -163,7 +163,7 @@ class CustomDrawer extends StatelessWidget {
     showDialog(
       context: context,
       builder: (context) {
-        return MyDialogBarCode();
+        return MyDialogBarCode(code: "123412341234");
       },
     );
 
