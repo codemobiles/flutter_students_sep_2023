@@ -10,15 +10,15 @@ class MyDialogBarCode extends StatelessWidget {
       content: SizedBox(
         height: 250,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             BarcodeWidget(
-              barcode: Barcode.aztec(), // Barcode type and settings
+              barcode: Barcode.code128(),
               data: 'https://pub.dev/packages/barcode_widget', // Content
-              width: 200,
-              height: 200,
+              width: 100,
+              height: 100,
             ),
-            SizedBox(height: 10),
-            Text("1234"),
           ],
         ),
       ),
