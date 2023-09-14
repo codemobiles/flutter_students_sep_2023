@@ -6,6 +6,7 @@ import 'package:demo0/src/pages/app_routes.dart';
 import 'package:demo0/src/pages/home/widgets/dialog_barcode_image.dart';
 import 'package:demo0/src/pages/home/widgets/dialog_qr_image.dart';
 import 'package:demo0/src/pages/home/widgets/dialog_scan_qrcode.dart';
+import 'package:demo0/src/pages/home/widgets/my_dialog_barcode_image.dart';
 import 'package:demo0/src/pages/home/widgets/product_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -159,13 +160,20 @@ class CustomDrawer extends StatelessWidget {
   }) : super(key: key);
 
   void _showDialogBarcode(context) {
-    showDialog<void>(
+    showDialog(
       context: context,
-      barrierDismissible: true,
-      builder: (BuildContext dialogContext) => const DialogBarcodeImage(
-        'www.codemobiles.com',
-      ),
+      builder: (context) {
+        return MyDialogBarCode();
+      },
     );
+
+    // showDialog<void>(
+    //   context: context,
+    //   barrierDismissible: true,
+    //   builder: (BuildContext dialogContext) => const DialogBarcodeImage(
+    //     'www.codemobiles.com',
+    //   ),
+    // );
   }
 
   void _showDialogQRImage(context) {
