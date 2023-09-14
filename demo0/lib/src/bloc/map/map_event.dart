@@ -1,8 +1,10 @@
 part of 'map_bloc.dart';
 
-sealed class MapEvent extends Equatable {
+abstract class MapEvent {
   const MapEvent();
+}
 
-  @override
-  List<Object> get props => [];
+class MapEventSubmitLocation extends MapEvent {
+  final LatLng? position;
+  const MapEventSubmitLocation({this.position});
 }
