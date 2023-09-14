@@ -72,7 +72,13 @@ class _MapPageState extends State<MapPage> {
                   );
                 },
                 icon: Icon(Icons.pin_drop)),
-            IconButton(onPressed: () {}, icon: Icon(Icons.pin_drop_outlined))
+            IconButton(
+                onPressed: () async {
+                  final controller = await _controller.future;
+                  controller.animateCamera(CameraUpdate.newLatLngZoom(
+                      LatLng(35.6585848, 139.742858), 15));
+                },
+                icon: Icon(Icons.pin_drop_outlined))
           ],
         ),
         body: Column(
