@@ -89,6 +89,7 @@ class _MapPageState extends State<MapPage> {
                 trafficEnabled: true,
                 onMapCreated: (controller) {
                   _controller.complete(controller);
+                  _dummyLocation();
                 },
                 initialCameraPosition: _initMap,
                 markers: _markers,
@@ -258,22 +259,21 @@ class _MapPageState extends State<MapPage> {
 
   Widget _buildTrackingButton() {
     final isTracking = _locationSubscription != null;
-    // return Padding(
-    //   padding: const EdgeInsets.only(right: 50.0),
-    //   child: FloatingActionButton.extended(
-    //     onPressed: _trackingLocation,
-    //     label: BlocBuilder<MapBloc, MapState>(
-    //       builder: (context, state) {
-    //         return Text(isTracking
-    //             ? 'Stop Tracking ${formatPosition(state.currentPosition)}'
-    //             : 'Start Tracking');
-    //       },
-    //     ),
-    //     backgroundColor: isTracking ? Colors.red : Colors.blue,
-    //     icon: Icon(isTracking ? Icons.stop : Icons.play_arrow),
-    //   ),
-    // );
-    return Text("1234");
+    return Padding(
+      padding: const EdgeInsets.only(right: 50.0),
+      child: FloatingActionButton.extended(
+        onPressed: _trackingLocation,
+        label: BlocBuilder<MapBloc, MapState>(
+          builder: (context, state) {
+            return Text(isTracking
+                ? 'Stop Tracking ${formatPosition(state.currentPosition)}'
+                : 'Start Tracking');
+          },
+        ),
+        backgroundColor: isTracking ? Colors.red : Colors.blue,
+        icon: Icon(isTracking ? Icons.stop : Icons.play_arrow),
+      ),
+    );
   }
 
   void _launchMaps({required double lat, required double lng}) async {
