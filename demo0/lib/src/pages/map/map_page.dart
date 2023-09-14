@@ -72,6 +72,9 @@ class _MapPageState extends State<MapPage> {
                   );
                 },
                 icon: Icon(Icons.pin_drop)),
+            IconButton(onPressed: () {
+              
+            }, icon: Icon(Icons.pin_drop_outlined))
           ],
         ),
         body: Column(
