@@ -161,10 +161,8 @@ class _MapPageState extends State<MapPage> {
   }
 
   Future<void> _buildSingleMarker({required LatLng position}) async {
-    final Uint8List markerIcon = await getBytesFromAsset(
-      Asset.pinBikerImage,
-      width: 150,
-    );
+    final Uint8List markerIcon =
+        await getBytesFromAsset(Asset.pinBikerImage, width: 150);
 
     logger.d(position.toString());
     final BitmapDescriptor bitmap = BitmapDescriptor.fromBytes(markerIcon);
