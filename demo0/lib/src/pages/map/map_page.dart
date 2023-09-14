@@ -4,7 +4,7 @@ import 'dart:io';
 
 import 'package:demo0/src/app.dart';
 import 'package:demo0/src/app.dart';
-// import 'package:demo0/src/bloc/map/map_bloc.dart';
+import 'package:demo0/src/bloc/map/map_bloc.dart';
 import 'package:demo0/src/constants/asset.dart';
 import 'package:demo0/src/services/common.dart';
 import 'package:demo0/src/widgets/custom_flushbar.dart';
@@ -78,7 +78,7 @@ class _MapPageState extends State<MapPage> {
           children: [
             Image.asset(Asset.logoImage),
             Expanded(
-              child: Text("1234"),
+              child: GoogleMap(initialCameraPosition: _initMap),
             )
           ],
         ));
