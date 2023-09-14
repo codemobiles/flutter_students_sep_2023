@@ -92,15 +92,7 @@ class _MapPageState extends State<MapPage> {
                 },
                 initialCameraPosition: _initMap,
                 markers: _markers,
-                polygons: {
-                  // dot, line, vector, polygon
-                  Polygon(
-                      polygonId: PolygonId("xxxx"),
-                      points: _dummyLatLng,
-                      fillColor: Colors.purple.withOpacity(0.3),
-                      strokeColor: Colors.yellow,
-                      strokeWidth: 2)
-                },
+                polygons: _polygons,
                 onTap: (latLng) => _buildSingleMarker(position: latLng),
               ),
             )
