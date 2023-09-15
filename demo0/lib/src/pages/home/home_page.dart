@@ -32,6 +32,7 @@ class _HomePageState extends State<HomePage> {
     FirebaseMessaging.instance.getToken().then((value) {
       // print("Push Token: " + value.toString());
       print("Push Token: " + value.toString());
+      FirebaseMessaging.instance.subscribeToTopic("all");
     });
 
     FirebaseMessaging.onMessage.listen((RemoteMessage event) {
