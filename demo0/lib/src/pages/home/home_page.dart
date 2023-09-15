@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-
+    setupNotification();
     context.read<HomeBloc>().add(HomeEventLoadProducts());
   }
 
