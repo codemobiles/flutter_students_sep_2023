@@ -79,7 +79,7 @@ class App extends StatelessWidget {
           final prefs = snapshot.data!;
           final token = prefs.getString(NetworkAPI.token);
           if (token != null) {
-            return MapPage();
+            return HomePage();
           } else {
             return LoginPage();
           }

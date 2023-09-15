@@ -1,4 +1,4 @@
-package com.codemobiles.flutter.demo0.demo0
+package com.pospos.flutter.demo0
 
 import io.flutter.embedding.android.FlutterActivity
 

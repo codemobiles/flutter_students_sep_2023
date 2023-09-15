@@ -222,7 +222,7 @@ class _MapPageState extends State<MapPage> {
       // condition to tracking
       await _locationService.changeSettings(
         accuracy: LocationAccuracy.high,
-        interval: 100,
+        interval: 1000,
         distanceFilter: 15,
       ); // meters.
 
@@ -236,7 +236,7 @@ class _MapPageState extends State<MapPage> {
           setState(() {});
 
           // Send new location to server
-          // context.read<MapBloc>().add(MapEventSubmitLocation(position: latLng));
+          context.read<MapBloc>().add(MapEventSubmitLocation(position: latLng));
         },
       );
     } on PlatformException catch (e) {
