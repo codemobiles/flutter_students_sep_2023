@@ -5,7 +5,7 @@
 
     
     <application
-        android:label="FlutterX"
+        android:label="FlutterZ"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">        
         <activity
