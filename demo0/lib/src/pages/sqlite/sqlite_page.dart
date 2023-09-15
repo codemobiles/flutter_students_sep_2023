@@ -1,81 +1,133 @@
-import 'package:flutter/foundation.dart';
+import 'package:demo0/src/bloc/sqlite/sqlite_bloc.dart';
+import 'package:demo0/src/constants/asset.dart';
+import 'package:demo0/src/models/sqlite_model.dart';
+import 'package:demo0/src/pages/sqlite/widgets/CMTextForm.dart';
+import 'package:demo0/src/services/database_service.dart';
 import 'package:flutter/material.dart';
-import 'package:sqflite/sqflite.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SqlitePage extends StatefulWidget {
-  const SqlitePage({super.key});
+  const SqlitePage({Key? key}) : super(key: key);
 
   @override
   State<SqlitePage> createState() => _SqlitePageState();
 }
 
 class _SqlitePageState extends State<SqlitePage> {
+  final _form = GlobalKey<FormState>();
+  final _sqliteModel = SqliteModel("", 0, 0);
+
+  @override
+  void initState() {
+    super.initState();
+    setupDatabase();
+  }
+
+  Future<void> setupDatabase() async {
+    await DatabaseService().open();
+    context.read<SqliteBloc>().add(SqliteEventQuery());
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    DatabaseService().close();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('SQLite'),
-        actions: [
-          IconButton(
-              onPressed: () {
-                runDemo();
-              },
-              icon: Icon(Icons.run_circle))
-        ],
-      ),
-      body: Container(),
-    );
+        appBar: AppBar(
+          title: const Text('SQLite (Optional)'),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.only(left: 30.0, right: 30),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 100,
+                child: Image.asset(Asset.sqliteBannerImage),
+              ),
+              Card(
+                elevation: 10,
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Form(
+                    key: _form,
+                    child: SizedBox(
+                      height: 270,
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            CMTextForm(
+                              initialValue: "ReactJS",
+                              label: "Name",
+                              onSave: (newValue) =>
+                                  _sqliteModel.name = newValue,
+                            ),
+                            CMTextForm(
+                              initialValue: "10",
+                              label: "Price",
+                              onSave: (newValue) =>
+                                  _sqliteModel.price = double.parse(newValue),
+                            ),
+                            CMTextForm(
+                              initialValue: "200",
+                              label: "Stock",
+                              onSave: (newValue) =>
+                                  _sqliteModel.stock = double.parse(newValue),
+                            ),
+                            const SizedBox(height: 20),
+                            BlocBuilder<SqliteBloc, SqliteState>(
+                                builder: (context, state) {
+                              return ElevatedButton(
+                                  onPressed:
+                                      state.status == SqliteStatus.fetching
+                                          ? null
+                                          : _handleClickSaveBtn,
+                                  child: Text(
+                                      state.status == SqliteStatus.fetching
+                                          ? "Loading..."
+                                          : "Save"));
+                            })
+                          ]),
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+              Expanded(
+                child: BlocBuilder<SqliteBloc, SqliteState>(
+                  builder: (context, state) {
+                    return ListView.builder(
+                      itemCount: state.historyArray.length,
+                      itemBuilder: (context, index) {
+                        final name = state.historyArray[index]["name"];
+                        final price = state.historyArray[index]["price"];
+                        final stock = state.historyArray[index]["stock"];
+                        return Row(
+                          children: [
+                            Expanded(child: Text(name)),
+                            Expanded(child: Text(price.toString() + " บาท")),
+                            Expanded(child: Text(stock.toString() + " ชิ้น")),
+                          ],
+                        );
+                      },
+                    );
+                  },
+                ),
+              )
+            ],
+          ),
+        ));
   }
 
-  runDemo() async {
-    // Get a location using getDatabasesPath
-    var databasesPath = await getDatabasesPath();
-    String path = "$databasesPath/demo.db";
+  void _handleClickSaveBtn() {
+    _form.currentState?.save();
+    context.read<SqliteBloc>().add(SqliteEventInsert(_sqliteModel));
+  }
 
-    // Delete the database
-    // await deleteDatabase(path);
-
-    // open the database
-    Database database = await openDatabase(path, version: 1,
-        onCreate: (Database db, int version) async {
-      // When creating the db, create the table
-      await db.execute(
-          'CREATE TABLE Test (id INTEGER PRIMARY KEY, name TEXT, value INTEGER, num REAL)');
-    });
-
-    // Insert some records in a transaction
-    await database.transaction((txn) async {
-      int id1 = await txn.rawInsert(
-          'INSERT INTO Test(name, value, num) VALUES("some name", 1234, 456.789)');
-      print('inserted1: $id1');
-      int id2 = await txn.rawInsert(
-          'INSERT INTO Test(name, value, num) VALUES(?, ?, ?)',
-          ['another name', 12345678, 3.1416]);
-      print('inserted2: $id2');
-    });
-
-    // Update some record
-    int? count = await database.rawUpdate(
-        'UPDATE Test SET name = ?, value = ? WHERE name = ?',
-        ['updated name', '9876', 'some name']);
-    print('updated: $count');
-
-    // Get the records
-    List<Map> list = await database.rawQuery('SELECT * FROM Test');
-    print(list);
-
-    // Count the records
-    count = Sqflite.firstIntValue(
-        await database.rawQuery('SELECT COUNT(*) FROM Test'));
-    // assert(count == 2);
-    print("count: $count");
-
-    // // Delete a record
-    // count = await database
-    //     .rawDelete('DELETE FROM Test WHERE name = ?', ['another name']);
-    // assert(count == 1);
-
-    // Close the database
-    await database.close();
+  void _handleClickQueryBtn() {
+    context.read<SqliteBloc>().add(SqliteEventQuery());
   }
 }

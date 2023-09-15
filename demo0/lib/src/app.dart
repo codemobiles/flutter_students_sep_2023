@@ -1,6 +1,7 @@
 import 'package:demo0/src/bloc/home/home_bloc.dart';
 import 'package:demo0/src/bloc/login/login_bloc.dart';
 import 'package:demo0/src/bloc/map/map_bloc.dart';
+import 'package:demo0/src/bloc/sqlite/sqlite_bloc.dart';
 import 'package:demo0/src/pages/app_routes.dart';
 import 'package:demo0/src/pages/home/home_page.dart';
 import 'package:demo0/src/pages/loading/loading_page.dart';
@@ -44,6 +45,7 @@ class App extends StatelessWidget {
     final homeBloc = BlocProvider(create: (context) => HomeBloc());
     final managementBloc = BlocProvider(create: (context) => ManagementBloc());
     final mapBloc = BlocProvider(create: (context) => MapBloc());
+    final sqliteBloc = BlocProvider(create: (context) => SqliteBloc());
 
     return MultiBlocProvider(
       providers: [
@@ -51,6 +53,7 @@ class App extends StatelessWidget {
         homeBloc,
         managementBloc,
         mapBloc,
+        sqliteBloc,
       ],
       child: MaterialApp(
         title: "CMApp",
