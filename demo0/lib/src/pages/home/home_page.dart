@@ -8,6 +8,7 @@ import 'package:demo0/src/pages/home/widgets/dialog_qr_image.dart';
 import 'package:demo0/src/pages/home/widgets/dialog_scan_qrcode.dart';
 import 'package:demo0/src/pages/home/widgets/my_dialog_barcode_image.dart';
 import 'package:demo0/src/pages/home/widgets/product_item.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -24,6 +25,35 @@ class _HomePageState extends State<HomePage> {
     super.initState();
 
     context.read<HomeBloc>().add(HomeEventLoadProducts());
+  }
+
+  late FirebaseMessaging messaging;
+  void setupNotification() {
+    FirebaseMessaging.instance.getToken().then((value) {
+      // print("Push Token: " + value.toString());
+      print("Push Token: " + value.toString());
+    });
+
+    FirebaseMessaging.onMessage.listen((RemoteMessage event) {
+      print("message recieved");
+      print(event.notification!.body);
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text("Notification"),
+              content: Text(event.notification!.body!),
+              actions: [
+                TextButton(
+                  child: Text("Ok"),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                )
+              ],
+            );
+          });
+    });
   }
 
   @override
