@@ -27,21 +27,26 @@ class _WebPageState extends State<WebPage> {
       body: Container(
         height: double.infinity,
         width: double.infinity,
-        child: InAppWebView(
-          initialUrlRequest: URLRequest(url: Uri.parse("https://pospos.co")),
-          onWebViewCreated: (controller) {
-            // Store the controller for later use
-            _webViewController = controller;
+        child: RefreshIndicator(
+          onRefresh: () async {
+            _webViewController.reload(); // Reload the web page
           },
-          initialOptions: InAppWebViewGroupOptions(
-            crossPlatform: InAppWebViewOptions(),
+          child: InAppWebView(
+            initialUrlRequest: URLRequest(url: Uri.parse("https://pospos.co")),
+            onWebViewCreated: (controller) {
+              // Store the controller for later use
+              _webViewController = controller;
+            },
+            initialOptions: InAppWebViewGroupOptions(
+              crossPlatform: InAppWebViewOptions(),
+            ),
+            onLoadStart: (controller, url) {
+              print("Page started loading: $url");
+            },
+            onLoadStop: (controller, url) {
+              print("Page finished loading: $url");
+            },
           ),
-          onLoadStart: (controller, url) {
-            print("Page started loading: $url");
-          },
-          onLoadStop: (controller, url) {
-            print("Page finished loading: $url");
-          },
         ),
       ),
     );
