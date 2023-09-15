@@ -46,6 +46,7 @@ class _WebPageState extends State<WebPage> {
             onLoadStop: (controller, url) {
               print("Page finished loading: $url");
             },
+            onLoadError: (controller, url, code, message) {},
           ),
         ),
       ),
