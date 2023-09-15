@@ -255,6 +255,11 @@ class CustomDrawer extends StatelessWidget {
               leading: const Icon(Icons.map_outlined, color: Colors.blue),
             ),
             ListTile(
+              onTap: () => Navigator.pushNamed(context, AppRoute.webview),
+              title: const Text("Web"),
+              leading: const Icon(Icons.web, color: Colors.purple),
+            ),
+            ListTile(
               onTap: () => Navigator.pushNamed(context, AppRoute.sqlite),
               title: const Text("SQLite3 (Option)"),
               leading: const Icon(Icons.table_rows_sharp, color: Colors.blue),
