@@ -2,6 +2,7 @@ import 'package:demo0/src/pages/firebase/firebaseauth_page.dart';
 import 'package:demo0/src/pages/firebase/firebasestore_page.dart';
 import 'package:demo0/src/pages/login/login_page.dart';
 import 'package:demo0/src/pages/sqlite/sqlite_page.dart';
+import 'package:demo0/src/pages/webview/web_page.dart';
 import 'package:flutter/material.dart';
 
 import 'firebase/firebaseanalytics_page.dart';
@@ -25,6 +26,7 @@ class AppRoute {
   static const forget_password = 'forget_password';
   static const firebase_store = 'firebase_store';
   static const firebase_analytics = 'firebase_analytics';
+  static const webview = 'webview';
 
   static get all => <String, WidgetBuilder>{
         login: (context) => const LoginPage(), // demo how to used widget
@@ -37,5 +39,6 @@ class AppRoute {
         firebase_auth: (context) => const FirebaseAuthPage(),
         firebase_store: (context) => const FirebaseStorePage(),
         firebase_analytics: (context) => const FirebaseAnalyticsPage(),
+        webview: (context) => const WebPage(),
       };
 }
