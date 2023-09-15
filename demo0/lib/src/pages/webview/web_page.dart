@@ -16,12 +16,23 @@ class _WebPageState extends State<WebPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Web'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                _webViewController.reload();
+              },
+              icon: const Icon(Icons.refresh))
+        ],
       ),
       body: Container(
         height: double.infinity,
         width: double.infinity,
         child: InAppWebView(
           initialUrlRequest: URLRequest(url: Uri.parse("https://pospos.co")),
+          onWebViewCreated: (controller) {
+            // Store the controller for later use
+            _webViewController = controller;
+          },
           initialOptions: InAppWebViewGroupOptions(
             crossPlatform: InAppWebViewOptions(),
           ),
